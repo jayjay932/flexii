@@ -1,0 +1,68 @@
+.cardContainer {
+  font-size: 15px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.cardContainer h1,
+.cardContainer h2,
+.cardContainer h3 {
+  margin-bottom: 20px;
+}
+
+.cardContainer p {
+  color: #555;
+  font-size: 16px;
+}
+
+.cardSectionTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.descriptionContainer {
+  position: relative;
+  max-height: 250px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.sectionText {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.readMoreBtn {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #e61e4d;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cardSectionTitle {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .sectionText {
+    font-size: 16px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .descriptionContainer {
+    max-height: 180px;
+  }
+}

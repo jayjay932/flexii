@@ -1,0 +1,70 @@
+.host-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .host-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+    font-weight: 600;
+  }
+  
+  .host-options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .host-card {
+    flex: 1;
+    min-width: 180px;
+    padding: 30px 20px;
+    border: 2px solid #ddd;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: white;
+  }
+  
+  .host-card:hover {
+    border-color: #e91e63;
+  }
+  
+  .host-card.selected {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 2px #e91e63;
+  }
+  
+  .host-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .host-label {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .host-footer {
+    margin-top: 50px;
+    text-align: right;
+  }
+  
+  .host-next-btn {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .host-next-btn:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+  }
+  

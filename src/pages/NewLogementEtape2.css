@@ -1,0 +1,165 @@
+/* NewLogementEtape2.css - Style moderne et pro */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #222;
+}
+
+.etape-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1rem 6rem;
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.etape-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.etape-logo {
+  height: 34px;
+  object-fit: contain;
+}
+
+.etape-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-outline,
+.btn-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 10px 18px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #222;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: #f7f7f7;
+}
+
+.btn-text {
+  border: none;
+  text-decoration: underline;
+}
+
+.etape-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.etape2-options {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.etape2-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.etape2-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.etape2-card.selected {
+  border: 2px solid #000;
+}
+
+.etape2-card strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.etape2-card p {
+  font-size: 0.88rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-icon {
+  font-size: 28px;
+  color: #000;
+}
+
+.etape-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 1rem 2rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.btn-main {
+  background-color: #000;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-main:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .etape-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .btn-main,
+  .btn-outline,
+  .btn-text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .etape-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .etape-logo {
+    height: 32px;
+  }
+}

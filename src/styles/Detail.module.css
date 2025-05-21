@@ -1,0 +1,735 @@
+:root {
+  --primary-pink: #FF385C;
+  --light-pink: #FFC1D3;
+  --white: #FFFFFF;
+  --black: #222222;
+  --grey: #666666;
+  --light-grey: #f9f9f9;
+}
+
+
+
+
+
+/* Container principal */
+
+.detailLocation {
+  color: var(--grey);
+  margin-bottom: 20px;
+  font-size: 24px; /* ✅ Choisis ici : 18px si petit, 28px si grand, ou 24px par défaut */
+}
+
+
+.detailTag {
+  display: inline-block;
+  background: #eee;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.priceBooking {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.price {
+  font-size: 44px;
+  font-weight: bold;
+}
+
+.detailBtn {
+  padding: 12px 30px;
+  background: linear-gradient(to right, #ff385c, #e61e4d);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.detailBtn:hover {
+  background: #e03553;
+}
+
+/* Equipements */
+.equipments {
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+.equipments h3 {
+  margin-bottom: 15px;
+  font-size: 38px;
+}
+
+.equipments ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.equipments li {
+  flex: 0 0 45%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.equipments li i {
+  color: var(--primary-pink);
+}
+
+/* Galerie */
+
+
+/* Container principal */
+.container {
+  max-width: 1120px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  margin-top: 100px; /* ✅ Ajoutez un margin-top pour laisser de l'espace avec la navbar */
+}
+
+/* Galerie */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Ou la hauteur que tu veux */
+  margin-bottom: 25px;
+  overflow: hidden;
+  border-radius: 14px;
+  margin-top: 80px; /* ✅ L'ajout de cet espace va décaler le carrousel par rapport au header */
+}
+
+.slideImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* ✅ IMPORTANT : le slide actuel doit être visible */
+  border-radius: 14px;
+}
+
+
+/* Les flèches */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 26px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.nav.left {
+  left: 15px;
+}
+
+.nav.right {
+  right: 15px;
+}
+
+.nav:hover {
+  background-color: white;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Host */
+.hostInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.hostAvatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.hostName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.commentsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.commentCard {
+  flex: 1 1 calc(25% - 20px);
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.commentText {
+  font-size: 15px;
+  color: var(--grey);
+}
+
+.commentAuthor {
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.description {
+  margin-top: 30px;
+}
+
+
+
+.cardContainer {
+  font-size: 15px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.cardContainer h1,
+.cardContainer h2,
+.cardContainer h3 {
+  margin-bottom: 20px;
+}
+
+.cardContainer p {
+  color: #555;
+  font-size: 16px;
+}
+
+.cardSectionTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.descriptionContainer {
+  position: relative;
+  max-height: 250px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.sectionText {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.readMoreBtn {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #e61e4d;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cardSectionTitle {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .sectionText {
+    font-size: 16px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .descriptionContainer {
+    max-height: 180px;
+  }
+}
+
+
+.fullGallery {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: white;
+  overflow-y: auto;
+  z-index: 9999;
+  animation: fadeIn 0.4s ease;
+}
+
+.galleryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: var(--light-pink);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.closeGalleryBtn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--primary-pink);
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 20px;
+}
+
+.galleryItem img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .galleryGrid {
+      grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+
+/* ✅ RESPONSIVE : Adaptation Mobile */
+@media (max-width: 768px) {
+  
+
+
+
+  
+
+  
+  .carousel {
+    position: relative;
+    width: 1000px;
+    height: 400px; /* Ou la hauteur que tu veux */
+    margin-bottom: 25px;
+    overflow: hidden;
+    border-radius: 14px;
+    margin-top: 1px; /* ✅ L'ajout de cet espace va décaler le carrousel par rapport au header */
+
+  }
+
+
+
+
+
+  /* parent */
+.host-section {
+  margin-top: 50px;
+}
+.host-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* card container */
+.host-card {
+  display: flex;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+/* colonne gauche */
+.host-card-left {
+  flex: 0 0 280px;
+  padding: 32px;
+  text-align: center;
+  border-right: 1px solid #ececec;
+}
+.avatar-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+}
+.host-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.superhost-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ff5a5f;
+  color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.host-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.superhost-text {
+  font-size: 14px;
+  color: #717171;
+}
+
+/* colonne droite */
+.host-card-right {
+  flex: 1;
+  padding: 32px;
+}
+.host-card-right h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.host-description {
+  font-size: 16px;
+  color: #484848;
+  margin-bottom: 24px;
+}
+
+/* stats verticales */
+.host-stats {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+}
+.stat-item strong {
+  font-size: 18px;
+}
+.stat-item span {
+  font-size: 14px;
+  color: #717171;
+  margin-top: 4px;
+}
+/* séparateurs entre stat-items */
+.host-stats .divider {
+  width: 1px;
+  height: 40px;
+  background: #ececec;
+  margin: 0 24px;
+}
+
+/* bouton message */
+.btn-message {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* détails cachés */
+.more-details summary {
+  font-size: 14px;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.more-details p {
+  font-size: 14px;
+  color: #484848;
+  margin: 4px 0;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .host-card {
+    flex-direction: column;
+  }
+  .host-card-left {
+    border-right: none;
+    border-bottom: 1px solid #ececec;
+  }
+  .host-card-left,
+  .host-card-right {
+    padding: 16px;
+  }
+  .host-stats {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+  .host-stats .divider {
+    display: none;
+  }
+}
+
+
+  
+  .container {
+    /* … */
+    margin-top: 100px; /* aussi à prendre en compte si c’est ton container global */
+  }
+  
+}
+
+.rules-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.rules-list li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rules-list i {
+  color: var(--primary-pink);
+  font-size: 20px;
+}
+
+
+
+
+/* Par défaut (mobile) = full-width */
+.carousel {
+  width: 100vw;
+  height: 400px;      /* ou 100% selon ton besoin */
+  overflow: hidden;
+  position: relative;
+  margin-top: 1px;    /* ton décalage par rapport au header */
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
+
+/* Sur PC (≥ 1024px), on “simule” le même container que .container */
+@media (min-width: 1024px) {
+  .carousel {
+    width: 1400px;
+    max-width: 1420px;
+    height: 700px;            /* comme dans ton CSS desktop */
+    margin: 190px auto 25px;   /* top / left&right auto / bottom */
+    border-radius: 14px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1. Wrapper 2-colonnes centré */
+.host-section {
+  margin-top: 50px;
+}
+.host-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+/* on centre et limite la largeur totale à 1080px (ou 1200px selon votre screenshot) */
+.host-section-wrapper {
+  display: grid;
+  grid-template-columns: 360px 1fr; /* carte fixe 360px, contenu flex */
+  column-gap: 40px;                /* espacement entre les deux blocs */
+  max-width: 1080px;
+  margin: 0 auto;                  /* centre dans la page */
+  padding: 0 16px;                 /* marges latérales sur petits écrans */
+}
+
+/* 2. La carte hôte */
+.host-card {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 32px;
+  text-align: center;
+}
+.avatar-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+}
+.host-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.superhost-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ff5a5f;
+  color: #fff;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.host-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.superhost-text {
+  font-size: 14px;
+  color: #717171;
+  margin-bottom: 24px;
+}
+.host-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stat-item {
+  display: flex; flex-direction: column; align-items: center;
+}
+.stat-item strong {
+  font-size: 18px;
+}
+.stat-item span {
+  font-size: 14px;
+  color: #717171;
+  margin-top: 4px;
+}
+.divider {
+  width: 1px; height: 40px;
+  background: #ececec;
+  margin: 0 24px;
+}
+
+/* 3. Bloc texte */
+.host-info-block h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.host-description {
+  font-size: 16px;
+  color: #484848;
+  margin-bottom: 24px;
+}
+.host-info-block h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.host-info-block p {
+  font-size: 14px;
+  color: #484848;
+  margin: 4px 0;
+}
+.btn-message {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 16px 0 24px;
+}
+.link-particulier {
+  font-size: 14px;
+  color: #222;
+  text-decoration: underline;
+}
+
+/* 4. Responsive < 768px : simple colonne */
+@media (max-width: 768px) {
+  .host-section-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .host-card,
+  .host-info-block {
+    padding: 16px;  /* moins de padding sur mobile */
+  }
+  .avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+}
+@media (max-width: 768px) {
+  .comments-btn-container {
+    margin: 20px 0;
+    padding: 0 16px;   /* pour ajouter un peu de marge intérieure */
+  }
+  .comments-btn {
+    width: 100% !important;    /* full‑width */
+    font-size: 14px;
+    padding: 10px 0;
+    text-align: center;
+  }
+  }
+
+  /* fichier styles.css (importé dans ton projet) */
+
+/* styles.css */

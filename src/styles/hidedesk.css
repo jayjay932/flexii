@@ -1,0 +1,56 @@
+
+    .sort-wrapper-desktop {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .sort-wrapper-desktop {
+    display: flex;
+  }
+}
+
+
+@media (min-width: 769px) {
+  .nav-center {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .nav-center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+    background: white;
+    position: sticky;
+    top: 70px; /* ajuste si besoin selon ta navbar */
+    z-index: 999;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .nav-link:hover {
+    background-color: #FF385C;
+    color: white;
+  }
+}
+
+
+
+  

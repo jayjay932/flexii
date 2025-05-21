@@ -1,0 +1,66 @@
+.fullGallery {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100vh; /* 👈 assure hauteur viewport */
+    max-height: 100vh; /* 👈 force à ne pas dépasser */
+    background: white;
+    overflow-y: auto;
+    z-index: 9999;
+    animation: fadeIn 0.4s ease;
+    display: flex; /* 👈 ajout clé */
+    flex-direction: column; /* 👈 les enfants vont s'empiler (header + grid) */
+}
+
+html.gallery-open, body.gallery-open {
+    overflow: hidden;
+    height: 100%; /* optionnel : pour bien figer */
+}
+
+
+
+.galleryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: var(--light-pink);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.closeGalleryBtn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--primary-pink);
+}
+.galleryGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    padding: 20px;
+    flex: 1; /* 👈 AJOUTÉ : pour qu'il prenne l’espace restant */
+    overflow-y: auto; /* 👈 bonus : sécurité si beaucoup d’images */
+}
+
+
+.galleryItem img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .galleryGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

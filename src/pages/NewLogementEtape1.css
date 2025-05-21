@@ -1,0 +1,189 @@
+/* RESET GLOBAL BASIQUE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  background-color: #fff; /* force un fond blanc neutre partout */
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #222;
+}
+
+.etapeContainer {
+  background-color: white;
+  padding: 2rem;
+}
+
+
+.etape-container {
+  background-color: #fff;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* Fullscreen Airbnb-like, propre, blanc, responsive */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* fond blanc total */
+  font-family: 'Helvetica Neue', sans-serif;
+  height: 100%;
+  color: #222;
+}
+
+.etape-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.5rem 7rem;
+  max-width: 1120px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+.etape-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.etape-logo {
+  height: 34px;
+  object-fit: contain;
+}
+
+.etape-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-outline,
+.btn-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 10px 18px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: #222;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: #f7f7f7;
+}
+
+.btn-text {
+  border: none;
+  text-decoration: underline;
+}
+
+.etape-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+.card.selected {
+  border: 2px solid #000;
+}
+
+.card-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+.card-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.etape-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 1rem 2rem;
+  z-index: 100;
+}
+
+.btn-main {
+  background-color: #000;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-main:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .etape-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .btn-main,
+  .btn-outline,
+  .btn-text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .etape-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .etape-logo {
+    height: 32px;
+  }
+}

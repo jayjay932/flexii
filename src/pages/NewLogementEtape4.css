@@ -1,0 +1,47 @@
+.etape2-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 par ligne */
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  
+  @media (max-width: 600px) {
+    .etape2-options {
+      grid-template-columns: repeat(2, 1fr); /* Toujours 2 sur mobile */
+    }
+  }
+  
+  .etape2-card {
+    background: white;
+    border: 1.5px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .etape2-card:hover {
+    box-shadow: 0 0 0 2px #e91e63;
+  }
+  
+  .etape2-card.selected {
+    border: 2px solid #e91e63;
+    background-color: #ffe6f0;
+  }
+  
+  .card-icon {
+    font-size: 26px;
+    color: #e91e63;
+    margin-top: 10px;
+  }
+  .etape-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+    

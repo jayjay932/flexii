@@ -1,0 +1,25 @@
+.car-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .car-features .feature {
+    display: flex;
+    align-items: center;
+    background-color: #fff0f5;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 500;
+    color: var(--black);
+    gap: 6px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.08);
+  }
+  
+  .icon-car {
+    color: var(--primary-pink);
+    font-size: 16px;
+  }
+  

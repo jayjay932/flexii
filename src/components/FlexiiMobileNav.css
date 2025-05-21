@@ -1,0 +1,81 @@
+/* src/components/FlexiiMobileNav.css */
+
+/* Par défaut on cache la navbar mobile */
+.flexii-navbar {
+    display: none;
+  }
+  
+  /* === Mobile uniquement === */
+  @media (max-width: 768px) {
+    .flexii-navbar {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+  
+    .flexii-navbar .nav-left,
+    .flexii-navbar .nav-center,
+    .flexii-navbar .nav-right {
+      display: flex;
+      align-items: center;
+    }
+  
+    /* Logo à gauche */
+    .flexii-navbar .nav-left {
+      flex: 1;
+      justify-content: flex-start;
+    }
+    .flexii-navbar .nav-logo {
+      height: 32px;
+      width: auto;
+    }
+  
+    /* Boutons centraux */
+    .flexii-navbar .nav-center {
+      flex: 2;
+      justify-content: center;
+      gap: 12px;
+    }
+    .flexii-navbar .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: #FF385C;
+      text-decoration: none;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .flexii-navbar .nav-link:hover {
+      background: rgba(255,56,92,0.1);
+    }
+  
+    /* Icônes à droite */
+    .flexii-navbar .nav-right {
+      flex: 1;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+    .flexii-navbar .globe-icon {
+      font-size: 18px;
+      color: #FF385C;
+      cursor: pointer;
+    }
+    .flexii-navbar .nav-profile {
+      display: flex;
+      gap: 8px;
+    }
+    .flexii-navbar .nav-profile i {
+      font-size: 18px;
+      color: #FF385C;
+      cursor: pointer;
+    }
+  }
+  

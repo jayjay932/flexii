@@ -1,0 +1,110 @@
+.etape-container {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  
+  .etape-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .etape-logo {
+    height: 40px;
+  }
+  
+  .etape-title {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 40px;
+  }
+  
+  .etape-subtext {
+    color: #666;
+    margin: 10px 0 30px;
+  }
+  
+  .price-section label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .price-section input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1.5px solid #e91e63;
+    font-size: 16px;
+  }
+  
+  .etape-subtitle {
+    margin: 30px 0 10px;
+    font-size: 18px;
+  }
+  
+  .discount-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  
+  .discount-option {
+    padding: 12px 20px;
+    border: 1.5px solid #ddd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .discount-option:hover {
+    border-color: #e91e63;
+  }
+  
+  .discount-option.selected {
+    background: #ffe6f0;
+    border-color: #e91e63;
+    color: #e91e63;
+    font-weight: bold;
+  }
+  
+  .btn-main {
+    background: #e91e63;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .btn-main:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-text, .btn-outline {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #555;
+  }
+  
+  .btn-outline {
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: 6px;
+  }
+  
+  .etape-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  

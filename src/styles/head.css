@@ -1,0 +1,72 @@
+/* Container du header qui prend toute la largeur */
+header {
+    width: 100%;
+    background-color: #fff; /* Arrière-plan blanc */
+    padding: 10px 20px; /* Espacement */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre sous le header */
+    position: fixed; /* Fixer le header en haut */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Placer le header au-dessus des autres éléments */
+    display: flex;
+    justify-content: space-between; /* Espacement entre les éléments */
+    align-items: center;
+  }
+  
+  header .flexbox {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* S'assurer que les éléments prennent toute la largeur */
+  }
+  
+  header .flex1 {
+    display: flex;
+    gap: 15px;
+  }
+  
+  header .flex2 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  header img.icon1 {
+    height: 40px;
+  }
+  
+  header .but1, header .but2, header .but3 {
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  header .but1:hover, header .but2:hover, header .but3:hover {
+    color: #f34245; /* Changer la couleur au survol */
+  }
+  
+  header .icon2 {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  header .f1 {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  header .avatar-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+
+  

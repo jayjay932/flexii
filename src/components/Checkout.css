@@ -1,0 +1,279 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+.checkout-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.checkout-left, .checkout-right {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  padding: 25px;
+}
+
+.checkout-left {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-right {
+  width: 370px;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.payment-method {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.payment-method:hover {
+  border-color: #ff385c;
+}
+
+.btn-submit {
+  background: #222;
+  color: white;
+  padding: 14px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-link {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #ff385c;
+  font-weight: bold;
+}
+
+.summary-image {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  background: url('<?= $mainImage ?>') center/cover no-repeat;
+  margin-bottom: 15px;
+}
+
+.price-detail p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.price-detail strong {
+  color: #111;
+}
+
+/* -------- RESPONSIVE -------- */
+@media screen and (max-width: 768px) {
+  .checkout-wrapper {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .checkout-left, .checkout-right {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* RÉORDONNANCEMENT sur mobile */
+  .checkout-left {
+    order: 2;
+    padding: 20px 15px;
+  }
+
+  .checkout-right {
+    order: 1;
+    padding: 20px 15px;
+  }
+
+  .logo {
+    width: 90px;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+
+  .btn-submit {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .payment-method {
+    font-size: 14px;
+  }
+
+  .summary-image {
+    height: 160px;
+  }
+
+  .cancel-link {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo {
+    width: 80px;
+  }
+
+  .payment-method {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .price-detail p {
+    font-size: 14px;
+  }
+
+  .cancel-link {
+    font-size: 13px;
+  }
+}
+/* -------- NAVBAR -------- */
+.navbar {
+  background: linear-gradient(to right, #FF385C, #FFC1D3);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 38px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar-links li a:hover {
+  opacity: 0.8;
+}
+
+/* ---- RESPONSIVE ---- */
+@media screen and (max-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navbar-links {
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .navbar-links::-webkit-scrollbar {
+    display: none; /* cache la scrollbar */
+  }
+}
+
+/* -------- FOOTER -------- */
+.footer {
+  background: #f9f9f9;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+  color: #777;
+  border-top: 1px solid #eee;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-title {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,17 @@
+.bar {
+    width: 100%;
+    background: linear-gradient(to right, #FF385C, #FFC1D3);
+    color: white;
+    text-align: center;
+  }
+  
+  .bar .f {
+    padding: 12px 20px;
+  }
+  
+  .bar h1 {
+    font-size: 17px;
+    font-family: system-ui, sans-serif;
+    font-weight: 500;
+  }
+  

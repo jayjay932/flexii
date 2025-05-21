@@ -1,0 +1,27 @@
+
+.rules-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  font-size: 18px;
+  color: #666;
+}
+
+.rules-list li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rules-list i {
+  color: var(--primary-pink);
+  font-size: 20px;
+}

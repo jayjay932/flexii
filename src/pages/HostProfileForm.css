@@ -1,0 +1,153 @@
+/* HostProfileForm.css – Style professionnel et responsive */
+
+.host-form-wrapper {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.host-form-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: #111;
+}
+
+.host-form-subtitle {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.host-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #e91e63;
+  outline: none;
+}
+
+.avatar-upload input {
+  padding: 0.4rem;
+}
+
+.avatar-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-top: 0.75rem;
+  object-fit: cover;
+  border: 2px solid #e91e63;
+}
+
+.upload-success {
+  color: #34a853;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.upload-hint {
+  color: #999;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.submit-button {
+  background-color: #e91e63;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #d81b60;
+}
+
+.form-message {
+  text-align: center;
+  font-weight: 500;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .host-form-wrapper {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.95rem;
+  }
+
+  .submit-button {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* Couleur rose pour les icônes */
+.form-group label svg {
+  color: #e91e63;
+}
+
+/* Titre principal stylé */
+.host-form-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  color: #e91e63;
+  letter-spacing: -0.5px;
+}
+
+/* Sous-titre plus doux */
+.host-form-subtitle {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-bottom: 2rem;
+}

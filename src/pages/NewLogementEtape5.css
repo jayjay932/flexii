@@ -1,0 +1,167 @@
+.etape-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .etape-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .etape-logo {
+    height: 40px;
+  }
+  
+  .etape-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .btn-text {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .btn-outline {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .etape-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .etape-subtext {
+    color: #777;
+    margin-bottom: 30px;
+  }
+  
+  .counter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  .counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .counter-controls button {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .counter-controls span {
+    font-size: 18px;
+  }
+  
+  .etape-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  
+  .btn-main {
+    background: black;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 600px) {
+    .etape-container {
+      padding: 20px 16px;
+    }
+  
+    .counter-controls {
+      gap: 14px;
+    }
+  
+    .etape-title {
+      font-size: 22px;
+    }
+  }
+  .counter-group {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+  }
+  
+  .counter-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+  
+  .counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .counter-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #aaa;
+    background: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #e91e63;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .counter-btn:disabled {
+    color: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .icon {
+    color: #e91e63;
+    font-size: 20px;
+  }
+    
