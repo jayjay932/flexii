@@ -1,0 +1,5 @@
+# Empêche l'accès direct aux fichiers JSON
+<FilesMatch "\.(json)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>

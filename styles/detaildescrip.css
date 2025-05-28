@@ -1,0 +1,83 @@
+
+
+.section-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.description-container {
+  position: relative;
+  max-height: 250px; /* ✅ hauteur initiale */
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.section-text {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.btn-readmore {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  color: #e61e4d;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .section-text {
+    font-size: 16px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .description-container {
+    max-height: 180px; /* ✅ limite plus basse sur mobile */
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 24px; /* ✅ un peu plus petit sur mobile */
+    text-align: center;
+  }
+
+  .section-text {
+    font-size: 16px; /* ✅ adapté mobile */
+    padding: 0 10px; /* ✅ un peu d'air sur les côtés */
+    max-width: 100%; /* ✅ prend toute la largeur */
+    text-align: center; /* ✅ meilleur confort lecture mobile */
+  }
+}
+.card {
+  font-size: 15px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h1, .card h2, .card h3 {
+  margin-bottom: 20px;
+}
+
+.card p {
+  color: #555;
+  font-size: 16px;
+}

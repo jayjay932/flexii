@@ -1,0 +1,131 @@
+
+.host-card {
+  display: flex;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  gap: 40px;
+  margin: 50px 0;
+  flex-wrap: wrap;
+}
+
+.host-left {
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+}
+
+.host-avatar-container {
+  position: relative;
+  display: inline-block;
+}
+
+.host-avatar {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.superhost-badge {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  background: #FF385C;
+  color: white;
+  font-size: 18px;
+  padding: 5px 8px;
+  border-radius: 50%;
+}
+
+.host-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.superhost-text {
+  color: var(--primary-pink);
+  font-size: 14px;
+}
+
+.host-right {
+  flex: 2;
+  min-width: 300px;
+}
+
+.host-right h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.host-right p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.host-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.host-extra p {
+  font-size: 15px;
+  margin: 8px 0;
+}
+
+.btn-message {
+  display: inline-block;
+  background: black;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.btn-message:hover {
+  background: #333;
+}
+
+
+/* ✅ RESPONSIVE : Adaptation Mobile */
+@media (max-width: 768px) {
+  .host-card {
+    flex-direction: column;
+    padding: 16px;
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .host-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .host-info {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .host-name {
+    font-size: 20px;
+  }
+
+  .host-status {
+    font-size: 12px;
+  }
+
+  .host-stats {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+}
