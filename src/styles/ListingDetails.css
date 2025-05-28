@@ -220,7 +220,7 @@
     background-color:rgba(230, 227, 227, 0.547);
   }
   
-  /*Airbnb your home flex right*/
+  /*publier une annonce flex right*/
   .listing-detail .flex2{
     padding-right:90px;
     display:flex;
@@ -238,7 +238,7 @@
     max-height: 200px; /* limite la hauteur maximale */
     padding-left: 18px;
   }
-  .listing-detail .but3{ /*Airbnb your home*/
+  .listing-detail .but3{ /*publier une annonce*/
     cursor:pointer;
     width:180px;
     padding: 10px 15px;

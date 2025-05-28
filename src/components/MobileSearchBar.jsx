@@ -9,6 +9,7 @@ function MobileSearchBar({ onClick }) {
     <span>Add dates</span>
     <span>—</span>
     <span>Add guests</span>
+    
     <span className="search-icon">
       <i className="bi bi-search"></i>
     </span>

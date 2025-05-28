@@ -16,30 +16,65 @@ import {
   FaCarSide
 } from 'react-icons/fa';
 
-
 import ImageCarousel from '../components/ImageCarousel';
 import FullGallery from '../components/FullGallery';
 import DescriptionBlock from '../components/DescriptionBlock';
-import Map from '../components/Map';
 import CalendarModalCars from '../components/CalendarModalCars';
-import Header from '../components/Header';
 import ProfileMenu from '../components/ProfileMenu';
-// ✅ Import CSS global
-
-import Head from '../components/Head';
-import BottomNav from '../components/BottomNav';
-
 import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
 import { AuthContext } from '../App';
+import BottomNavCar from '../components/BottomNavCar';
+
+
+function HeadCar({ isLoggedIn, avatarUrl, onAvatarClick }) {
+  return (
+    <header className="header-container flexii-header desktop-header">
+      <div className="flexbox">
+        <img src="/flexii.png" className="icon1" alt="Logo" />
+
+        <div className="flex1">
+          <button className="but2" onClick={() => window.location.href = `/`}>
+            Logement
+          </button>
+          <button className="but2" onClick={() => window.location.href = `/vehicules`}>
+            Voiture
+          </button>
+          <button className="but2" onClick={() => window.location.href = `/vehicules`}>
+            Services
+          </button>
+        </div>
+
+        <div className="flex2">
+          <button className="but3">publier une annonce</button>
+          <button className="icon2">
+            <i className="bi bi-globe"></i>
+          </button>
+        </div>
+
+        <button
+          className="f1 profile-button"
+          id="profileButton"
+          onClick={onAvatarClick}
+          title={isLoggedIn ? 'Voir mon profil' : 'Se connecter'}
+          aria-label={isLoggedIn ? 'Voir mon profil' : 'Se connecter'}
+        >
+          <i className="bi bi-person-circle"></i>
+          <span className="profile-label">
+            {isLoggedIn ? 'Mon profil' : 'Connexion'}
+          </span>
+        </button>
+      </div>
+    </header>
+  );
+}
 
 function CarsDetails() {
   const { id } = useParams();
   const location = useLocation();
   const initialListing = location.state?.listing || null;
 
-  // États principaux
-  const [listingData, setListingData] = useState(null);
+  const [listingData, setListingData] = useState(initialListing || null);
   const [comments, setComments] = useState([]);
   const [host, setHost] = useState(null);
   const [availabilityMap, setAvailabilityMap] = useState({});
@@ -47,46 +82,58 @@ function CarsDetails() {
   const [loadingHost, setLoadingHost] = useState(true);
   const [showGallery, setShowGallery] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
-  // Auth / UI context
   const { auth, setAuth } = useContext(AuthContext);
   const { loggedIn, user } = auth;
 
-  
-    // UI state
-    const [loginVisible, setLoginVisible] = useState(false);
-    const [signupVisible, setSignupVisible] = useState(false);
-    const [showReservation, setShowReservation] = useState(false);
-    const [reloadListings, setReloadListings] = useState(false);
-    const [sortOption, setSortOption] = useState('');
-    const [filteredListings, setFilteredListings] = useState(null);
-    const [defaultListings, setDefaultListings] = useState([]);
-    const [menuVisible, setMenuVisible] = useState(false);
-  
-    const toggleMenu = () => setMenuVisible(v => !v);
-    const resetFilters = () => setFilteredListings(null);
-  
-   
-  
-    const openMenu = () => setMenuVisible(true);
-    const closeMenu = () => setMenuVisible(false); () => setMenuVisible(v => !v);
-   
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-  // Modales
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [signupOpen, setSignupOpen] = useState(false);
+  useEffect(() => {
+    const fetchAllData = async () => {
+      try {
+        setLoading(true);
+        setLoadingHost(true);
+
+        const [listingRes, commentsRes, hostRes, availabilityRes] = await Promise.all([
+          initialListing ? Promise.resolve({ json: () => initialListing }) : fetch(`http://localhost/flexii/api/get_cars.php?id=${id}`),
+          fetch(`http://localhost/flexii/api/get_comments_cars.php?vehicule_id=${id}`),
+          fetch(`http://localhost/flexii/api/get_host_cars.php?vehicule_id=${id}`),
+          fetch(`http://localhost/flexii/api/availabilities_cars.php?vehicule_id=${id}`)
+        ]);
+
+        const listingJson = initialListing ? initialListing : await listingRes.json();
+        const commentsJson = await commentsRes.json();
+        const hostJson = await hostRes.json();
+        const availabilityJson = await availabilityRes.json();
+
+        setListingData(listingJson);
+        setComments(commentsJson);
+        setHost(hostJson);
+        setAvailabilityMap(availabilityJson.availabilities || {});
+      } catch (error) {
+        console.error('Erreur chargement des données :', error);
+      } finally {
+        setLoading(false);
+        setLoadingHost(false);
+      }
+    };
+
+    fetchAllData();
+  }, [id]);
+
   const openLogin = () => setLoginOpen(true);
   const closeLogin = () => setLoginOpen(false);
   const openSignup = () => setSignupOpen(true);
   const closeSignup = () => setSignupOpen(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
-
-useEffect(() => {
-  const handleResize = () => setIsMobile(window.innerWidth <= 600);
-  window.addEventListener('resize', handleResize);
-  return () => window.removeEventListener('resize', handleResize);
-}, []);
-
+  const toggleMenu = () => setMenuVisible(v => !v);
 
   const handleLoginSuccess = (userData) => {
     setAuth({ loggedIn: true, user: userData, loading: false });
@@ -98,58 +145,7 @@ useEffect(() => {
     closeSignup();
   };
 
-  // Quand on clique sur l'avatar
-  const onAvatarClick = () => {
-    if (loggedIn) {
-      // éventuellement ouvrir un menu profil
-    } else {
-      openLogin();
-    }
-  };
-
-  // ✅ Load availability
-  useEffect(() => {
-    fetch(`http://localhost/flexii/api/availabilities_cars.php?vehicule_id=${id}`)
-      .then(res => res.json())
-      .then(data => {
-        if (data.availabilities) {
-          setAvailabilityMap(data.availabilities);
-        }
-      })
-      .catch(err => console.error('Erreur chargement disponibilités :', err));
-  }, [id]);
-  
-
-  // ✅ Load listing data
-  useEffect(() => {
-    if (!initialListing) {
-      setLoading(true);
-      fetch(`http://localhost/flexii/api/get_cars.php?id=${id}`)
-        .then(res => res.json())
-        .then(data => setListingData(data))
-        .catch(err => console.error('Erreur API annonce :', err))
-        .finally(() => setLoading(false));
-    }
-  }, [id, initialListing]);
-
-  // ✅ Load comments
-  useEffect(() => {
-    fetch(`http://localhost/flexii/api/get_comments_cars.php?vehicule_id=${id}`)
-      .then(res => res.json())
-      .then(data => setComments(data))
-      .catch(err => console.error('Erreur API commentaires :', err));
-  }, [id]);
-
-  // ✅ Load host info
-  useEffect(() => {
-    fetch(`http://localhost/flexii/api/get_host_cars.php?vehicule_id=${id}`)
-      .then(res => res.json())
-      .then(data => setHost(data))
-      .catch(err => console.error('Erreur API hôte :', err))
-      .finally(() => setLoadingHost(false));
-  }, [id]);
-
-  const listing = listingData || initialListing;
+  const listing = listingData;
   const validComments = comments.filter(c => c.content?.trim());
 
   if (loading) return <div>Chargement des détails...</div>;
@@ -157,20 +153,20 @@ useEffect(() => {
 
   return (
     <div className="listing-detail">
-      <Head
+      <HeadCar
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}
-        onAvatarClick={openMenu}
+        onAvatarClick={toggleMenu}
       />
 
-      {/* Menu profil */}
       <ProfileMenu
         isLoggedIn={loggedIn}
         onLoginClick={openLogin}
         onSignupClick={openSignup}
         visible={menuVisible}
-        onClose={closeMenu}
+        onClose={toggleMenu}
       />
+
       {showGallery && (
         <FullGallery images={listing.images} onClose={() => setShowGallery(false)} />
       )}
@@ -180,7 +176,10 @@ useEffect(() => {
       </div>
 
       <div className="container">
-        <h1>{listing.title}</h1>
+        {/* ... ton JSX original reste ici sans modification de classes */}
+
+
+          <h1>{listing.title}</h1>
         <div className="location">{listing.city}, {listing.address}</div>
 
         <div className="details">
@@ -310,14 +309,23 @@ useEffect(() => {
           <div className="host-card">
             <div className="host-left">
               <div className="host-avatar-container">
-                <img src={host.avatar_url} alt={`Photo de ${host.name}`} className="host-avatar" />
-                {host.superhost && <div className="superhost-badge">★</div>}
+                <img
+  src={host.avatar_url ? `http://localhost/flexii/api/${host.avatar_url}` : '/default-avatar.jpg'}
+  alt={`Photo de ${host.name}`}
+  className="host-avatar"
+/>
+{Boolean(Number(host.superhost)) && <div className="superhost-badge">★</div>}
+
               </div>
+              
               <div className="host-name">{host.name}</div>
-              {host.superhost && <div className="superhost-text">Superhôte</div>}
+            <h3>
+  {host.name} {host.superhost == 1 || host.superhost === "1" ? 'est Superhôte' : ''}
+</h3>
+
             </div>
             <div className="host-right">
-              <h3>{host.name} est Superhôte</h3>
+             
               <p>Hôte expérimenté avec d’excellentes évaluations.</p>
               <div className="host-info">
                 <div><strong>{host.total_reviews}</strong> évaluations</div>
@@ -334,14 +342,11 @@ useEffect(() => {
         ) : (
           <p style={{ color: 'grey', marginTop: 40 }}>Aucun hôte trouvé pour ce logement.</p>
         )}
-
-        {/* Modales connexion */}
-        <LoginModal visible={loginOpen} onClose={closeLogin} onSwitch={() => { closeLogin(); openSignup(); }} onLoginSuccess={handleLoginSuccess} />
-        <SignupModal visible={signupOpen} onClose={closeSignup} onSignupSuccess={handleSignupSuccess} />
-
-        {/* Bottom Nav */}
-        <BottomNav isLoggedIn={loggedIn} onLoginClick={openLogin} onSignupClick={openSignup} />
       </div>
+
+      <LoginModal visible={loginOpen} onClose={closeLogin} onSwitch={() => { closeLogin(); openSignup(); }} onLoginSuccess={handleLoginSuccess} />
+      <SignupModal visible={signupOpen} onClose={closeSignup} onSignupSuccess={handleSignupSuccess} />
+      <BottomNavCar isLoggedIn={loggedIn} onLoginClick={openLogin} onSignupClick={openSignup} />
     </div>
   );
 }

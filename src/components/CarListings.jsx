@@ -19,25 +19,27 @@ function CarListings({ listings: externalListings, isLoggedIn, onLoginClick, rel
 
   const listingsToRender = externalListings?.length ? externalListings : internalListings;
 
+ 
+
   return (
     <div className="flexbox4">
-      {externalListings?.length > 0 && (
-        <button
-          onClick={onResetFilters}
-          style={{
-            marginBottom: "20px",
-            padding: "10px 20px",
-            borderRadius: "25px",
-            border: "none",
-            backgroundColor: "#FF385C",
-            color: "white",
-            fontWeight: 600,
-            cursor: "pointer"
-          }}
-        >
-          Réinitialiser les filtres
-        </button>
-      )}
+ {externalListings && (
+  <button
+    style={{
+      marginBottom: "20px",
+      padding: "10px 20px",
+      borderRadius: "25px",
+      border: "none",
+      backgroundColor: "#FF385C",
+      color: "white",
+      fontWeight: 600,
+      cursor: "pointer"
+    }}
+    onClick={onResetFilters}
+  >
+    Réinitialiser les filtres
+  </button>
+)}
 
       {listingsToRender.length > 0 ? (
         <>

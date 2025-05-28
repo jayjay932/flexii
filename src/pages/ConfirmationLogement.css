@@ -8,6 +8,14 @@ html, body {
   color: #222;
 }
 
+
+
+.etape-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 160px; /* espace pour ne pas cacher le contenu sous le footer */
+}
+
 .confirmation-container {
   min-height: 100vh;
   padding: 3rem 1.5rem;

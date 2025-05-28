@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import './CheckoutPage.css';
-import BottomNav from '../components/BottomNav';
+import BottomNavCar from '../components/BottomNavCar';
 import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
 import { AuthContext } from '../App';
@@ -188,7 +188,7 @@ export default function CheckoutPage() {
         />
 
         {/* Bottom Nav */}
-        <BottomNav isLoggedIn={loggedIn} onLoginClick={openLogin} onSignupClick={openSignup} />
+        <BottomNavCar isLoggedIn={loggedIn} onLoginClick={openLogin} onSignupClick={openSignup} />
       </div>
 
       <footer className="footer">

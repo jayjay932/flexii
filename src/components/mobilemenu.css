@@ -1,4 +1,21 @@
 
+.mobile-menu-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  line-height: 1;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-button:hover {
+  color: #ff5a5f;
+}
 
 
 

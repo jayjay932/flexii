@@ -112,6 +112,7 @@ function FilterPanel({ onApply, onClose }) {
 
 
   return (
+    <div className="etape-scrollable">
     <div className="filter-panel">
       <button className="close-btn" onClick={onClose}>
         <FaTimes />
@@ -193,21 +194,39 @@ function FilterPanel({ onApply, onClose }) {
           </button>
         </div>
       </div>
+<div className="filter-section">
+  <label>Type de location</label>
+  <div className="icon-options">
+    <button
+      className={filters.typeLocation === 'mensuel' ? 'active' : ''}
+      onClick={() => setFilters(prev => ({
+        ...prev,
+        typeLocation: prev.typeLocation === 'mensuel' ? '' : 'mensuel'
+      }))}
+    >
+      <FaCalendarAlt /> Mensuel
+    </button>
+    <button
+      className={filters.typeLocation === 'courte' ? 'active' : ''}
+      onClick={() => setFilters(prev => ({
+        ...prev,
+        typeLocation: prev.typeLocation === 'courte' ? '' : 'courte'
+      }))}
+    >
+      <FaClock /> Courte durée
+    </button>
+    <button
+      className={filters.typeLocation === 'achat' ? 'active' : ''}
+      onClick={() => setFilters(prev => ({
+        ...prev,
+        typeLocation: prev.typeLocation === 'achat' ? '' : 'achat'
+      }))}
+    >
+      <FaShoppingCart /> Achat
+    </button>
+  </div>
+</div>
 
-      <div className="filter-section">
-        <label>type de location</label>
-        <div className="icon-options">
-          <button className={filters.typeLocation === 'mensuel' ? 'active' : ''} onClick={() => setFilters(prev => ({ ...prev, typeLocation: prev.typeLocation === 'mensuel' ? '' : 'mensuel' }))}>
-            <FaCalendarAlt /> Mensuel
-          </button>
-          <button className={filters.typeLocation === 'courte' ? 'active' : ''} onClick={() => setFilters(prev => ({ ...prev, typeLocation: prev.typeLocation === 'courte' ? '' : 'courte' }))}>
-            <FaClock /> Courte durée
-          </button>
-          <button className={filters.typeLocation === 'achat' ? 'active' : ''} onClick={() => setFilters(prev => ({ ...prev, typeLocation: prev.typeLocation === 'achat' ? '' : 'achat' }))}>
-            <FaShoppingCart /> Achat
-          </button>
-        </div>
-      </div>
 
       <div className="filter-section">
         <label>Prix</label>
@@ -233,6 +252,7 @@ function FilterPanel({ onApply, onClose }) {
         })}>Réinitialiser</button>
       </div>
     </div>
+     </div>
   );
 }
 

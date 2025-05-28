@@ -215,4 +215,8 @@
     font-size: 16px;
     color: #ff4d6d;
   }
-  
+  .etape-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 160px; /* espace pour ne pas cacher le contenu sous le footer */
+}

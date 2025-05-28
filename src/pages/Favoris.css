@@ -1,0 +1,14 @@
+/* Set.module.css - Ajout pour Favoris */
+
+.price {
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #FF385C;
+}
+
+.no-favorites {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 3rem;
+}

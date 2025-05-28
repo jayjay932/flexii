@@ -8,6 +8,7 @@ import Map from '../components/Map';
 import CalendarModal from '../components/CalendarModal';
 import Header from '../components/Header';
 import ProfileMenu from '../components/ProfileMenu';
+import MobileMenu from '../components/MobileMenu';
 // ✅ Import CSS global
 
 import Head from '../components/Head';
@@ -31,7 +32,7 @@ function ListingDetails() {
   const [loadingHost, setLoadingHost] = useState(true);
   const [showGallery, setShowGallery] = useState(false);
   const [calendarOpen, setCalendarOpen] = useState(false);
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
   // Auth / UI context
   const { auth, setAuth } = useContext(AuthContext);
   const { loggedIn, user } = auth;
@@ -128,6 +129,7 @@ function ListingDetails() {
 
   return (
     <div className="listing-detail">
+    
       <Head
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}
@@ -161,12 +163,15 @@ function ListingDetails() {
           <div className="tag">{listing.num_bathrooms} salle(s) de bain</div>
         </div>
 
-        <div className="price-booking">
-          <div className="price">€{listing.price_per_night} / nuit</div>
-          <button className="btn" onClick={() => setCalendarOpen(true)}>
-            Réserver
-          </button>
-        </div>
+     <div className="price-booking">
+  <div className="price">
+    €{listing.price_per_night} / {listing.rental_type === 'mensuel' ? 'mois' : 'nuit'}
+  </div>
+  <button className="btn" onClick={() => setCalendarOpen(true)}>
+    Réserver
+  </button>
+</div>
+
 
         <CalendarModal
           isOpen={calendarOpen}
@@ -247,12 +252,20 @@ function ListingDetails() {
               ))}
             </div>
             
-            <div style={{ textAlign: 'center', marginTop: 40  }}>
-              
-              <Link to={`/afficher_commentaires/${listing.id}`} className="btn">
-                Voir tous les commentaires
-              </Link>
-            </div>
+             
+                        <div style={{ textAlign: 'center', marginTop: 40  }}>
+                          
+                        <Link
+              to={`/afficher_commentaires/${listing.id}`}
+              className="btn"
+              style={{
+                padding: isMobile ? '8px 16px' : '12px 24px',
+                fontSize: isMobile ? '14px' : '16px'
+              }}
+            >
+              Voir tous les commentaires
+            </Link>
+                        </div>
           </section>
           
         ) : (
@@ -272,7 +285,12 @@ function ListingDetails() {
           <div className="host-card">
             <div className="host-left">
               <div className="host-avatar-container">
-                <img src={host.avatar_url} alt={`Photo de ${host.name}`} className="host-avatar" />
+              <img
+  src={host.avatar_url ? `http://localhost/flexii/api/${host.avatar_url}` : '/default-avatar.jpg'}
+  alt={`Photo de ${host.name}`}
+  className="host-avatar"
+/>
+
                 {host.superhost && <div className="superhost-badge">★</div>}
               </div>
               <div className="host-name">{host.name}</div>

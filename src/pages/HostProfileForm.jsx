@@ -49,24 +49,34 @@ export default function HostProfileForm() {
     formData.append('description', description);
     if (avatarFile) formData.append('avatar', avatarFile);
     if (identityFile) formData.append('identity', identityFile);
+try {
+  const response = await fetch('http://localhost/flexii/api/host_register.php', {
+    method: 'POST',
+    body: formData,
+    credentials: 'include'
+  });
 
-    try {
-      const response = await fetch('http://localhost/flexii/api/host_register.php', {
-        method: 'POST',
-        body: formData,
-        credentials: 'include'
-      });
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error('Réponse serveur non OK :', errorText);
+    setMessage('❌ Erreur serveur : ' + response.status);
+    return;
+  }
 
-      const result = await response.json();
-      if (result.success) {
-        setMessage('✅ Profil enregistré avec succès !');
-      } else {
-        setMessage('❌ Une erreur est survenue.');
-      }
-    } catch (error) {
-      console.error('Erreur :', error);
-      setMessage('❌ Échec de l’envoi au serveur.');
-    }
+  const result = await response.json();
+  console.log('Résultat API :', result);
+
+  if (result.success) {
+    setMessage('✅ Profil enregistré avec succès !');
+    // ➕ Réinitialiser les champs si besoin
+  } else {
+    setMessage(result.error || '❌ Une erreur est survenue.');
+  }
+} catch (error) {
+  console.error('Erreur JS :', error);
+  setMessage('❌ Échec de l’envoi au serveur.');
+}
+
   };
 
   return (
@@ -132,7 +142,12 @@ export default function HostProfileForm() {
         </div>
 
         <button type="submit" className="submit-button">Enregistrer mon profil</button>
-        {message && <p className="form-message">{message}</p>}
+       {message && (
+  <p className={`form-message ${message.startsWith('✅') ? 'success' : 'error'}`}>
+    {message}
+  </p>
+)}
+
       </form>
     </div>
   );

@@ -7,10 +7,10 @@ import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
 import CategoryBar from '../components/categorybar';
 import MobileSearchBar from '../components/MobileSearchBar';
-import ReservationModal from '../components/ReservationModal';
+import CarReservationModal from '../components/CarReservationModal';
 import FilterPanelCar from '../components/FilterPanelCar';
 import CarListings from '../components/CarListings';
-import BottomNav from '../components/BottomNav';
+import BottomNavCar from '../components/BottomNavCar';
 import { AuthContext } from '../App';
 
 export default function HomePageCars() {
@@ -65,7 +65,13 @@ export default function HomePageCars() {
   return (
     <>
       <Bar />
-      <MobileMenu />
+      <MobileMenu
+        isLoggedIn={loggedIn}
+        avatarUrl={user?.avatar || '/flexii.png'}
+        onAvatarClick={openMenu}
+        onLoginClick={openLogin}
+        onSignupClick={openSignup}  
+        />
       <Header
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}
@@ -100,7 +106,7 @@ export default function HomePageCars() {
 
       <MobileSearchBar onClick={() => setShowReservation(true)} />
 
-      <ReservationModal
+      <CarReservationModal
         visible={showReservation}
         onClose={() => setShowReservation(false)}
         onResults={setFilteredCars}
@@ -125,7 +131,7 @@ export default function HomePageCars() {
         onResetFilters={() => setFilteredCars(null)}
       />
 
-      <BottomNav
+      <BottomNavCar
         isLoggedIn={loggedIn}
         onLoginClick={openLogin}
         onSignupClick={openSignup}

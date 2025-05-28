@@ -129,7 +129,7 @@ body {
   background: #e6f4ea;
   color: #34a853;
 }
-.list-item.refusée .badge-status {
+.list-item.refuse .badge-status {
   background: #fdecea;
   color: #d93025;
 }
@@ -453,4 +453,40 @@ body {
   .chart-box {
     padding: 0.75rem;
   }
+}
+
+
+.eye-button {
+  background: none;
+  border: none;
+  color: #007BFF;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+.eye-button i {
+  margin-right: 5px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
 }

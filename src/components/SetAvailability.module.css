@@ -1,0 +1,95 @@
+.availabilityWrapper {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #222;
+}
+
+.title {
+  font-size: 1.8rem;
+  color: #FF385C;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.imageCarousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.carouselImage {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.availabilityForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formRow label {
+  font-weight: 500;
+  color: #333;
+}
+
+input, select {
+  padding: 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.submitButton {
+  background-color: #FF385C;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: #e0284d;
+}
+
+.successMessage {
+  color: #2ecc71;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .formRow {
+    flex-direction: column;
+  }
+
+  .carouselImage {
+    width: 140px;
+    height: 100px;
+  }
+
+  .availabilityWrapper {
+    padding: 1.2rem;
+  }
+}

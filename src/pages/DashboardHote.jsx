@@ -9,6 +9,7 @@ import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, Legend
 } from 'recharts';
+import { Link } from 'react-router-dom';
 
 export default function DashboardHote() {
   const [data, setData] = useState(null);
@@ -29,6 +30,21 @@ export default function DashboardHote() {
       case 'en attente': return <FaHourglassHalf className="icon pending" />;
       default: return null;
     }
+  };
+
+  const isRefuse = (statut) =>
+    statut?.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '') === 'refuse';
+
+  const [motifVisible, setMotifVisible] = useState(false);
+  const [motifTexte, setMotifTexte] = useState('');
+
+  const showMotif = (motif) => {
+    setMotifTexte(motif);
+    setMotifVisible(true);
+  };
+
+  const hideMotif = () => {
+    setMotifVisible(false);
   };
 
   if (!data) return <div>Chargement...</div>;
@@ -55,12 +71,13 @@ export default function DashboardHote() {
         <h2 className="sidebar-title">Mon espace</h2>
         <nav className="sidebar-nav">
           <ul>
-            <li><FaHome /> Tableau de bord</li>
-            <li><FaPlusCircle /> Ajouter un logement</li>
-            <li><FaHome /> Gérer les logements</li>
-            <li><FaComments /> Voir les commentaires</li>
-            <li><FaUsers /> Répondre aux clients</li>
-            <li><FaCalendarCheck /> Gérer les disponibilités</li>
+            <li><Link to="/"><FaHome /> Accueil</Link></li>
+            <li><Link to="/dashboard_hote"><FaHome /> Tableau de bord</Link></li>
+            <li><Link to="/new-logement-etape1"><FaPlusCircle /> Ajouter un logement</Link></li>
+            <li><Link to="/edit-listing"><FaHome /> Gérer les logements</Link></li>
+            <li><Link to="/comment-host"><FaComments /> Voir les commentaires</Link></li>
+            <li><Link to="/repondre-clients"><FaUsers /> Répondre aux clients</Link></li>
+            <li><Link to="/set-availability"><FaCalendarCheck /> Gérer les disponibilités</Link></li>
           </ul>
         </nav>
       </aside>
@@ -79,7 +96,7 @@ export default function DashboardHote() {
           }, {
             icon: <FaCalendarAlt className="stat-icon" />, label: 'Ce mois', value: logementsCeMois
           }, {
-            icon: <FaEuroSign className="stat-icon" />, label: "Chiffre d'affaires", value: chiffreAffaires + ' €'
+            icon: <FaEuroSign className="stat-icon" />, label: "Chiffre d'affaires mensuel", value: chiffreAffaires + ' €'
           }].map((item, idx) => (
             <div className="card-stat" key={idx}>
               {item.icon}
@@ -135,6 +152,11 @@ export default function DashboardHote() {
                 <div className="list-content">
                   <strong>{d.titre}</strong>
                   <span className="badge-status">{d.statut}</span>
+                  {isRefuse(d.statut) && d.motif && (
+                    <button className="eye-button" onClick={() => showMotif(d.motif)}>
+                      <i className="fas fa-eye"></i> Voir le motif
+                    </button>
+                  )}
                 </div>
               </li>
             ))}
@@ -166,6 +188,16 @@ export default function DashboardHote() {
             </table>
           </div>
         </section>
+
+        {motifVisible && (
+          <div className="modal-overlay" onClick={hideMotif}>
+            <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+              <h3>Motif du refus</h3>
+              <p>{motifTexte}</p>
+              <button className="btn-main" onClick={hideMotif}>Fermer</button>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

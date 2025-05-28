@@ -38,23 +38,24 @@ function Listings({ listings: externalListings, isLoggedIn, onLoginClick, reload
 
   return (
     <div className="flexbox4">
-  {externalListings && externalListings.length > 0 && (
-    <button
-      style={{
-        marginBottom: "20px",
-        padding: "10px 20px",
-        borderRadius: "25px",
-        border: "none",
-        backgroundColor: "#FF385C",
-        color: "white",
-        fontWeight: 600,
-        cursor: "pointer"
-      }}
-      onClick={onResetFilters}
-    >
-      Réinitialiser les filtres
-    </button>
-  )}
+ {externalListings && (
+  <button
+    style={{
+      marginBottom: "20px",
+      padding: "10px 20px",
+      borderRadius: "25px",
+      border: "none",
+      backgroundColor: "#FF385C",
+      color: "white",
+      fontWeight: 600,
+      cursor: "pointer"
+    }}
+    onClick={onResetFilters}
+  >
+    Réinitialiser les filtres
+  </button>
+)}
+
 
   {listingsToRender.length > 0 ? (
     <>

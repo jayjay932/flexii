@@ -1,0 +1,24 @@
+.commentaires-logement-wrapper {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.comment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.comment-item {
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.comment-date {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: #777;
+}

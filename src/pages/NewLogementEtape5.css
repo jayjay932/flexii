@@ -138,7 +138,12 @@
     align-items: center;
     gap: 16px;
   }
-  
+  .etape-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 160px; /* espace pour ne pas cacher le contenu sous le footer */
+}
+
   .counter-btn {
     width: 36px;
     height: 36px;
@@ -165,3 +170,5 @@
     font-size: 20px;
   }
     
+
+  

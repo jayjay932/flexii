@@ -1,0 +1,68 @@
+/* Fichier : setAvailabilityScoped.css */
+
+.set-availability-page {
+  padding: 2rem;
+  background: #14141f;
+  min-height: 100vh;
+  color: #e0e0e0;
+}
+
+.availability-panel {
+  background: #1f1f2e;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.availability-panel h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #4e5ae8;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 3px;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05);
+}
+
+.carousel-item img {
+  height: 160px;
+  width: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-item p {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #e0e0e0;
+}

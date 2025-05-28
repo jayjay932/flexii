@@ -12,7 +12,7 @@ import {
 } from 'react-icons/fa';
 
 const categories = [
-  { name: 'Immobilier', icon: <FaHome />, path: '/immobilier' },
+  { name: 'Immobilier', icon: <FaHome />, path: '/' },
   { name: 'Véhicules', icon: <FaCar />, path: '/vehicules' },
   { name: 'Électronique', icon: <FaLaptop />, path: '/electronique' },
   { name: 'Meubles', icon: <FaCouch />, path: '/meubles' },

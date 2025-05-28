@@ -75,7 +75,13 @@ export default function HomePage() {
   return (
     <>
       <Bar />
-      <MobileMenu />
+     <MobileMenu
+        isLoggedIn={loggedIn}
+        avatarUrl={user?.avatar || '/flexii.png'}
+        onAvatarClick={openMenu}
+        onLoginClick={openLogin}
+        onSignupClick={openSignup}  
+        />
       <Header
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}

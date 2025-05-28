@@ -32,13 +32,15 @@ function NewLogementEtape1() {
   return (
     <div className="etape-container">
       <div className="etape-header">
+        
         <img src="/flexii.png" alt="Logo" className="etape-logo" />
         <div className="etape-actions">
+            
           <button className="btn-text">Des questions ?</button>
           <button className="btn-outline">Enregistrer et quitter</button>
         </div>
       </div>
-
+<div className="etape-scrollable">
       <h2 className="etape-title">Parmi les propositions suivantes, laquelle décrit le mieux votre logement ?</h2>
 
       <div className="grid">
@@ -64,6 +66,7 @@ function NewLogementEtape1() {
           Suivant
         </button>
       </div>
+    </div>
     </div>
   );
 }

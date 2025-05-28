@@ -42,7 +42,17 @@ html, body {
   max-width: 1120px;
   margin: 0 auto;
   background-color: #fff;
+
+  /* ✅ Ajoute un padding supplémentaire pour que le footer ne cache pas le contenu */
+  padding-bottom: 140px; /* correspond à la hauteur du footer + marge */
 }
+
+.etape-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 160px; /* espace pour ne pas cacher le contenu sous le footer */
+}
+
 
 .etape-header {
   display: flex;

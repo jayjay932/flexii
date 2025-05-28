@@ -13,7 +13,12 @@
     display: inline-block;
     margin-bottom: 20px;
   }
-  
+  .etape-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 160px; /* espace pour ne pas cacher le contenu sous le footer */
+}
+
   .upload-box i {
     font-size: 28px;
     margin-bottom: 8px;

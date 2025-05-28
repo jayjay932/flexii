@@ -1,0 +1,339 @@
+.modifier-wrapper {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.modifier-wrapper h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #FF385C;
+  margin-bottom: 2rem;
+}
+
+.modifier-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modifier-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #333;
+  font-size: 1rem;
+}
+
+.modifier-form input,
+.modifier-form textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+.modifier-form input:focus,
+.modifier-form textarea:focus {
+  border-color: #FF385C;
+  outline: none;
+}
+
+.modifier-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #FF385C;
+}
+
+.equipements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.equipement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f8f8;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.equipement-card i {
+  font-size: 1.5rem;
+  color: #FF385C;
+  margin-bottom: 0.5rem;
+}
+
+.equipement-card.checked {
+  border-color: #FF385C;
+  background-color: #fff0f4;
+}
+
+.equipement-card input {
+  display: none;
+}
+
+.modifier-form button {
+  background-color: #FF385C;
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 2rem;
+}
+
+.modifier-form button:hover {
+  background-color: #e0284d;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .equipements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.modifier-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #FF385C;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #ffe8ed;
+}
+
+
+/* ModifierLogement.css */
+.modifier-wrapper {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+  font-family: 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+}
+
+.modifier-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #FF385C;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #ffe8ed;
+}
+
+.modifier-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.modifier-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #333;
+  font-size: 1rem;
+}
+
+.modifier-form input,
+.modifier-form textarea {
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fafafa;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+.modifier-form input:focus,
+.modifier-form textarea:focus {
+  border-color: #FF385C;
+  outline: none;
+}
+
+.modifier-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #FF385C;
+}
+
+.equipements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.equipement-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f8f8;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+.equipement-card i {
+  font-size: 1.5rem;
+  color: #FF385C;
+  margin-bottom: 0.5rem;
+}
+
+.equipement-card.checked {
+  border-color: #FF385C;
+  background-color: #fff0f4;
+}
+
+.equipement-card input {
+  display: none;
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.preview-item {
+  position: relative;
+  width: 130px;
+  height: 90px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: visible; /* ← assure que le bouton ne soit pas masqué */
+}
+
+.preview-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+
+.preview-item button:hover {
+  transform: scale(1.1);
+}
+
+.preview-item button {
+  position: absolute;
+  bottom: 6px; /* positionné en bas à droite pour être visible */
+  right: 6px;
+  background: #FF385C;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease;
+  white-space: nowrap; /* pour éviter que "Supprimer" soit cassé */
+}
+
+
+
+
+
+
+button[type="submit"] {
+  background-color: #FF385C;
+  color: white;
+  padding: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 2rem;
+}
+
+button[type="submit"]:hover {
+  background-color: #e0284d;
+}

@@ -49,7 +49,7 @@ function NewLogementEtape5() {
 
       <h2 className="etape-title">Donnez les informations principales concernant votre logement</h2>
       <p className="etape-subtext">Vous pourrez ajouter d'autres informations plus tard, comme les types de lit.</p>
-
+<div className="etape-scrollable">
       <div className="counter-group">
         {fields.map(({ label, key, icon }) => (
           <div className="counter-row" key={key}>
@@ -69,6 +69,7 @@ function NewLogementEtape5() {
         <button className="btn-text" onClick={() => navigate(-1)}>Retour</button>
         <button className="btn-main" onClick={handleNext}>Suivant</button>
       </div>
+    </div>
     </div>
   );
 }

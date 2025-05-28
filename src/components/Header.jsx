@@ -12,13 +12,20 @@ function Header({ isLoggedIn, avatarUrl, onAvatarClick }) {
         <img src="flexii.png" className="icon1" alt="Logo" />
 
         <div className="flex1">
-          <button className="but1">Logement</button>
-          <button className="but1">Voiture</button>
-          <button className="but2">Restauration</button>
+
+                 <button className="but2" onClick={() => window.location.href = `/`}>
+  Logement
+</button>
+   <button className="but2" onClick={() => window.location.href = `/vehicules`}>
+Voiture
+</button>
+  <button className="but2" onClick={() => window.location.href = `/vehicules`}>
+services
+</button>
         </div>
 
         <div className="flex2">
-          <button className="but3">Airbnb your home</button>
+          <button className="but3">publier une annonce</button>
           <button className="icon2"><i className="bi bi-globe"></i></button>
           <button
             className="f1 profile-button"

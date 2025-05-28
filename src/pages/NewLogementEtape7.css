@@ -7,7 +7,12 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
     font-family: 'Arial', sans-serif;
   }
-  
+  .etape-scrollable {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 160px; /* espace pour ne pas cacher le contenu sous le footer */
+}
+
   
   .etape-header {
     display: flex;

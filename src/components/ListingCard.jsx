@@ -4,7 +4,6 @@ import './filter.css';
 import './searchbar.css';
 import './imagegrid.css';
 import './mobilemenu.css';
-
 import { useNavigate } from 'react-router-dom';
 
 function ListingCard({ listing, isLoggedIn, onLoginClick }) {
@@ -52,12 +51,11 @@ function ListingCard({ listing, isLoggedIn, onLoginClick }) {
     }
   };
 
+  // 🔁 Texte du prix selon le type de location
+  const priceUnit = listing.rental_type === 'mensuel' ? 'mois' : 'nuit';
+
   return (
-
-    
     <div
-
-    
       className="card1"
       onClick={() => navigate(`/listing/${listing.id}`, { state: { listing } })}
       style={{ cursor: 'pointer' }}
@@ -88,7 +86,7 @@ function ListingCard({ listing, isLoggedIn, onLoginClick }) {
             {new Date(listing.created_at).toLocaleDateString()}
           </p>
           <div className="h">
-            <strong>€{listing.price_per_night}</strong> / night
+            <strong>€{listing.price_per_night}</strong> / {priceUnit}
           </div>
         </div>
 

@@ -5,7 +5,7 @@ import ImageCarousel from '../components/ImageCarousel';
 import FullGallery from '../components/FullGallery';
 import Head from '../components/Head';
 import ProfileMenu from '../components/ProfileMenu';
-import BottomNav from '../components/BottomNav';
+import BottomNavCar from '../components/BottomNavCar';
 import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
 import { AuthContext } from '../App';
@@ -56,12 +56,7 @@ function VehicleDetails() {
 
   return (
     <div className="listing-detail">
-      <Head
-        isLoggedIn={loggedIn}
-        avatarUrl={user?.avatar || '/flexii.png'}
-        onAvatarClick={openMenu}
-      />
-
+     
       <ProfileMenu
         isLoggedIn={loggedIn}
         onLoginClick={openLogin}
@@ -121,7 +116,7 @@ function VehicleDetails() {
 
         <DescriptionBlock description={vehicle.description || 'Aucune description fournie.'} />
 
-        <BottomNav isLoggedIn={loggedIn} onLoginClick={openLogin} onSignupClick={openSignup} />
+        <BottomNavCar isLoggedIn={loggedIn} onLoginClick={openLogin} onSignupClick={openSignup} />
 
         <LoginModal visible={loginOpen} onClose={closeLogin} onSwitch={() => { closeLogin(); openSignup(); }} onLoginSuccess={handleLoginSuccess} />
         <SignupModal visible={signupOpen} onClose={closeSignup} onSignupSuccess={handleSignupSuccess} />

@@ -49,7 +49,7 @@ function NewLogementEtape4() {
       </div>
 
       <h2 className="etape-title">🛠️ Quels équipements proposez-vous ?</h2>
-
+<div className="etape-scrollable">
       <div className="etape2-options">
         {equipments.map((item, i) => (
           <div
@@ -69,6 +69,7 @@ function NewLogementEtape4() {
           Suivant
         </button>
       </div>
+    </div>
     </div>
   );
 }

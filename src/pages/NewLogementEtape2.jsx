@@ -51,7 +51,7 @@ function NewLogementEtape2() {
       </div>
 
       <h2 className="etape-title">Quel type de logement sera à la disposition des voyageurs ?</h2>
-
+<div className="etape-scrollable">
       <div className="etape2-options">
         {options.map((opt, i) => (
           <div
@@ -74,6 +74,7 @@ function NewLogementEtape2() {
           Suivant
         </button>
       </div>
+    </div>
     </div>
   );
 }
