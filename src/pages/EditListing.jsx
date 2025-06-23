@@ -77,7 +77,7 @@ function EditListing() {
                   <p><strong>Adresse :</strong> {selectedListing.address}, {selectedListing.city}, {selectedListing.country}</p>
                   <p><strong>Prix :</strong> {selectedListing.price_per_night} FCFA</p>
                   <p><strong>Capacité :</strong> {selectedListing.max_guests} pers.</p>
-                  <p><strong>Statut :</strong> {selectedListing.statut}</p>
+                  <p><strong>Statut :</strong> {selectedListing.posted_statut}</p>
                   {selectedListing.motif && <p><strong>Motif :</strong> {selectedListing.motif}</p>}
 
                   <h3>Équipements :</h3>

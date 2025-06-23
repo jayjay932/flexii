@@ -1,0 +1,154 @@
+.user-booking-container {
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Bouton retour */
+.back-button-wrapper {
+  width: 100%;
+  max-width: 1024px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #ff5a5f;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* Header */
+.user-booking-header {
+  width: 100%;
+  max-width: 1024px;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.user-booking-header h1 {
+  font-size: 26px;
+  margin-bottom: 0.5rem;
+}
+
+.user-booking-header p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Liste des réservations */
+.booking-list {
+  width: 100%;
+  max-width: 1024px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .booking-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .booking-list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Carte de réservation */
+.booking-card {
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  transition: transform 0.2s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-4px);
+}
+
+.booking-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.booking-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.booking-info h2 {
+  font-size: 18px;
+  margin-bottom: 0.2rem;
+}
+
+.booking-dates {
+  font-size: 14px;
+  color: #888;
+}
+
+.comment-status {
+  font-size: 14px;
+}
+
+.comment-status.green {
+  color: green;
+  font-weight: bold;
+}
+
+.comment-status.grey {
+  color: #aaa;
+}
+
+/* Boutons */
+.btn-pink {
+  display: inline-block;
+  background-color: #ff5a5f;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-outline-pink {
+  display: inline-block;
+  color: #ff5a5f;
+  border: 1px solid #ff5a5f;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.user-booking-footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 14px;
+  color: #aaa;
+  width: 100%;
+}

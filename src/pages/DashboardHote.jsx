@@ -50,15 +50,23 @@ export default function DashboardHote() {
   if (!data) return <div>Chargement...</div>;
 
   const {
-    totalLogements,
-    logementsCetteSemaine,
-    logementsCeMois,
-    chiffreAffaires,
-    logementsOccupes,
-    demandes,
-    logements,
-    revenusData
-  } = data;
+  totalLogements,
+  logementsCetteSemaine,
+  logementsCeMois,
+  chiffreAffaires,
+  logementsOccupes,
+  demandes,
+  logements,
+  revenusData,
+  chiffresPerListing = [],
+  chiffresPerListingAnnuel = [], // ✅ ICI
+   logementsReservesAnnee,
+    reservationsParListingMois = {},
+  reservationsParListingAnnee = {}, // ✅ ICI
+  likesPerListing = {}
+   
+
+} = data;
 
   const occupationData = [
     { name: 'Occupés', value: logementsOccupes },
@@ -172,18 +180,44 @@ export default function DashboardHote() {
                   <th>Nom</th>
                   <th>Voyageurs</th>
                   <th>Prix / nuit</th>
+                     <th>Prix / mois</th>
+                         
+                     <th>Chiffre d'affaire /mois</th>
+                     
+                      <th>Chiffre d'affaire / an</th>
+                       <th>Réservation /mois</th>
+                       <th>Réservation /an</th>
+              
+
+                      <th>Likes</th> {/* Nouvelle colonne */}
+                  
                   <th>Statut</th>
                 </tr>
               </thead>
               <tbody>
-                {logements.map((l) => (
+                 {logements.map((l) => {
+   
+    const ca = chiffresPerListing?.find((item) => item.listing_id === l.id)?.total || 0;
+    const caAnnuel = chiffresPerListingAnnuel.find(item => item.listing_id === l.id)?.total || 0;
+const reservationsMois = reservationsParListingMois[l.id] || 0;
+    const reservationsAnnee = reservationsParListingAnnee[l.id] || 0; // ✅ ICI
+      const likes = likesPerListing[l.id] || 0;
+    return (
+             
                   <tr key={l.id}>
                     <td>{l.titre}</td>
                     <td>{l.voyageurs}</td>
                     <td>{l.prix} €</td>
+                      <td>{l.price_per_month} €</td>
+                        <td>{ca} €</td>
+                         <td>{caAnnuel} €</td>
+                    <td>{reservationsMois}</td>
+                    <td>{reservationsAnnee}</td> {/* ✅ ICI */}
+                        <td>{likes}</td> {/* 👈 nombre de likes */}
                     <td><span className={`status-badge ${l.statut.toLowerCase()}`}>{l.statut}</span></td>
                   </tr>
-                ))}
+               );
+  })}
               </tbody>
             </table>
           </div>

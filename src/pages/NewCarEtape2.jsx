@@ -10,10 +10,11 @@ const options = [
     value: 'location_journalière',
   },
   {
-    title: 'Location hebdomadaire',
-    desc: 'Idéal pour les séjours plus longs : la voiture est louée à la semaine.',
+    title: 'vente de véhicule',
+    desc: 'Vous pouvez vendre votre véhicule directement.',
+   
     icon: 'fa-calendar-week',
-    value: 'location_hebdomadaire',
+    value: 'vente_vehicule',
   },
   {
     title: 'Location mensuelle',

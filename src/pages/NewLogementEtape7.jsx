@@ -1,30 +1,54 @@
+
+
+
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './NewLogementEtape7.css';
+import './NewLogementEtape2.css'; // ✅ On réutilise les mêmes styles
+
+const options = [
+  {
+    title: 'Location journalière',
+    desc: 'Les voyageurs peuvent louer votre maison  à la journée.',
+    icon: 'fa-calendar-day',
+    value: 'courte',
+  },
+ 
+ 
+  {
+    title: 'vente de logement',
+    desc: 'Vous pouvez vendre votre logement  directement.',
+   
+    icon: 'fa-calendar-week',
+    value: 'achat',
+  },
+  {
+    title: 'Location mensuelle',
+    desc: 'Parfait pour les besoins prolongés : votre maison est louée au mois.',
+    icon: 'fa-calendar-alt',
+    value: 'mensuel',
+  },
+];
 
 function NewLogementEtape7() {
+  const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const typeVehicule = location.state?.typeVehicule;
   const previousData = location.state || {};
 
-  const [price, setPrice] = useState('');
-  const [discount, setDiscount] = useState(null);
-
-  const isValid = price && parseFloat(price) > 0;
-
   const handleNext = () => {
-    if (isValid) {
-      navigate('/confirmation', {
+    if (selected) {
+      navigate('/new-logement-etape8', {
         state: {
-          ...previousData,
-          final_price: price,
-          weekend_discount: discount
+       ...previousData,
+          typeLocation: selected
         }
       });
     }
   };
 
   return (
+    
     <div className="etape-container">
       <div className="etape-header">
         <img src="/flexii.png" alt="Logo" className="etape-logo" />
@@ -34,47 +58,34 @@ function NewLogementEtape7() {
         </div>
       </div>
 
-      <h2 className="etape-title">💰 Définissez le prix de votre logement</h2>
-      <p className="etape-subtext">Fixez un prix par nuit. Vous pourrez l’ajuster plus tard.</p>
-
-      <div className="price-section">
-        <label htmlFor="price">Prix par nuit (€)</label>
-        <input
-          type="number"
-          id="price"
-          min={1}
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          placeholder="Ex : 45"
-        />
-      </div>
-
-      <h3 className="etape-subtitle">Souhaitez-vous appliquer une réduction le week-end ?</h3>
-      <div className="discount-options">
-        {[5, 10, 15].map((value) => (
+      <h2 className="etape-title">
+        Quel type de location souhaitez-vous proposer pour ce véhicule ?
+      </h2>
+<div className="etape-scrollable">
+      <div className="etape2-options">
+        {options.map((opt, i) => (
           <div
-            key={value}
-            className={`discount-option ${discount === value ? 'selected' : ''}`}
-            onClick={() => setDiscount(value)}
+            key={i}
+            className={`etape2-card ${selected === opt.value ? 'selected' : ''}`}
+            onClick={() => setSelected(opt.value)}
           >
-            -{value}%
+            <div>
+              <strong>{opt.title}</strong>
+              <p>{opt.desc}</p>
+            </div>
+            <i className={`fas ${opt.icon} card-icon`}></i>
           </div>
         ))}
-        <div
-          className={`discount-option ${discount === null ? 'selected' : ''}`}
-          onClick={() => setDiscount(null)}
-        >
-          Aucune
-        </div>
       </div>
 
       <div className="etape-footer">
         <button className="btn-text" onClick={() => navigate(-1)}>Retour</button>
-        <button className="btn-main" onClick={handleNext} disabled={!isValid}>
+        <button className="btn-main" onClick={handleNext} disabled={!selected}>
           Suivant
         </button>
       </div>
     </div>
+ </div>
   );
 }
 

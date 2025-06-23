@@ -28,6 +28,7 @@ import NewLogementEtape4 from './pages/NewLogementEtape4.jsx';
 import NewLogementEtape5 from './pages/NewLogementEtape5.jsx';
 import NewLogementEtape6 from './pages/NewLogementEtape6.jsx';
 import NewLogementEtape7 from './pages/NewLogementEtape7.jsx';
+import NewLogementEtape8 from './pages/NewLogementEtape8.jsx';
 import Etape3 from './pages/Etape3.jsx';
 import ConfirmationLogement from './pages/ConfirmationLogement.jsx';
 import DashboardHote from './pages/DashboardHote.jsx';
@@ -54,7 +55,23 @@ import CommentairesLogement from './pages/CommentairesLogement.jsx';
 import HostReservedListings from './pages/HostReservedListings.jsx';
 import BookingsLogements from './pages/BookingsLogements.jsx';
 import Messagerie from './pages/Messagerie.jsx';
+import HostProfileView from './pages/HostProfileView.jsx';
+import EditFieldModal from './pages/EditFieldModal.jsx';
+import MessagingPage from './pages/MessagingPage.jsx';
 // Contexte d’auth: on expose un objet { auth, setAuth }
+import AdminDashboard from './pages/AdminDashboard.jsx';
+import HostApprovalDashboard from './pages/HostApprovalDashboard.jsx';
+import HostDetailsPage from './pages/HostDetailsPage.jsx';
+import HostStatusManager from './pages/HostStatusManager.jsx';
+import BookingTable from './pages/BookingTable.jsx';
+import TransactionTable from './pages/TransactionTable.jsx';
+import AgentTable from './pages/AgentTable.jsx';
+import AgentCodeUsageTable from './pages/AgentCodeUsageTable.jsx';
+import AgentPublicationsTable from './pages/AgentPublicationsTable.jsx';
+import UserDetailsPage from './pages/UserDetailsPage.jsx';
+import FormulaireAchat from './pages/FormulaireAchat.jsx';
+import RecapReservation from './pages/RecapReservation.jsx';
+import RecapReservationVente from './pages/RecapReservationVente.jsx';
 export const AuthContext = createContext({
   auth:    { loggedIn: false, user: null, loading: false },
   setAuth: () => {}
@@ -103,6 +120,7 @@ function App() {
       <Route path="/new-logement-etape5"   element={<NewLogementEtape5 />} />
       <Route path="/new-logement-etape6"   element={<NewLogementEtape6 />} />
       <Route path="/new-logement-etape7"   element={<NewLogementEtape7 />} />
+      <Route path="/new-logement-etape8"   element={<NewLogementEtape8 />} />
       <Route path="/new-car-etape1"   element={<NewCarEtape1 />} />
       <Route path="/new-car-etape2"   element={<NewCarEtape2 />} />
       <Route path="/new-car-etape3"   element={<NewCarEtape3 />} />
@@ -137,8 +155,29 @@ function App() {
 
 
 
-       <Route path="/commentaires-logement/:id" element={<CommentairesLogement />} />           
+       <Route path="/commentaires-logement/:id" element={<CommentairesLogement />} />  
+    <Route path="/host-profile-view" element={<HostProfileView />} />
+       <Route path="/message" element={<MessagingPage />} />
+       <Route path='/AdminDashboard' element={<AdminDashboard />} />
+       <Route path='/HostApprovalDashboard' element={<HostApprovalDashboard />} />
+  <Route path="/host-details" element={<HostDetailsPage />} />
 
+<Route path="/host-status" element={<HostStatusManager />} />
+<Route path="/booking-admin" element={<BookingTable />} />
+<Route path="/transaction-admin" element={<TransactionTable />} />
+<Route path="/agent-admin" element={<AgentTable />} />
+<Route path="/agent-code-usage" element={<AgentCodeUsageTable />} />
+<Route path="/agent-publications" element={<AgentPublicationsTable />} />
+<Route path="/user-details" element={<UserDetailsPage />} />
+
+<Route path="/formulaire-achat" element={<FormulaireAchat />} />
+<Route path="/recap-reservation/:booking_id" element={<RecapReservation />} />
+<Route path="/recap-reservation-vente/:id" element={<RecapReservationVente />} />
+
+
+
+
+   
         {/* Routes pour les voitures */}
      
       </Routes>

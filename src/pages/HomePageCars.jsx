@@ -5,13 +5,14 @@ import Header from '../components/Header';
 import ProfileMenu from '../components/ProfileMenu';
 import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
-import CategoryBar from '../components/categorybar';
+import CategoryCars from '../components/CategoryCars';
 import MobileSearchBar from '../components/MobileSearchBar';
 import CarReservationModal from '../components/CarReservationModal';
 import FilterPanelCar from '../components/FilterPanelCar';
 import CarListings from '../components/CarListings';
 import BottomNavCar from '../components/BottomNavCar';
 import { AuthContext } from '../App';
+import ProfileCars from '../components/ProfileCars';
 
 export default function HomePageCars() {
   const { auth, setAuth } = useContext(AuthContext);
@@ -19,13 +20,15 @@ export default function HomePageCars() {
 
   const [loginVisible, setLoginVisible] = useState(false);
   const [signupVisible, setSignupVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   const [showReservation, setShowReservation] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
   const [reloadCars, setReloadCars] = useState(false);
+
   const [sortOption, setSortOption] = useState('');
+  const [searchText, setSearchText] = useState('');
   const [filteredCars, setFilteredCars] = useState(null);
   const [defaultCars, setDefaultCars] = useState([]);
-  const [menuVisible, setMenuVisible] = useState(false);
-  const [showFilters, setShowFilters] = useState(false);
 
   const openMenu = () => setMenuVisible(true);
   const closeMenu = () => setMenuVisible(false);
@@ -51,16 +54,30 @@ export default function HomePageCars() {
       .then(res => res.json())
       .then(data => setDefaultCars(data));
   }, [reloadCars]);
+const applySort = (list) => {
+  if (!list) return [];
 
-  const applySort = (list) => {
-    if (!list) return [];
-    switch (sortOption) {
-      case 'price_low': return [...list].sort((a, b) => a.price_per_day - b.price_per_day);
-      case 'price_high': return [...list].sort((a, b) => b.price_per_day - a.price_per_day);
-      case 'newest': return [...list].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-      default: return list;
-    }
-  };
+  let filtered = list;
+
+  // ✅ Filtrage avec vérification
+  if (searchText.trim() !== '') {
+    filtered = filtered.filter(item =>
+      item.title && item.title.toLowerCase().includes(searchText.toLowerCase())
+    );
+  }
+
+  switch (sortOption) {
+    case 'price_low':
+      return [...filtered].sort((a, b) => a.price_per_day - b.price_per_day);
+    case 'price_high':
+      return [...filtered].sort((a, b) => b.price_per_day - a.price_per_day);
+    case 'newest':
+      return [...filtered].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    default:
+      return filtered;
+  }
+};
+
 
   return (
     <>
@@ -70,14 +87,14 @@ export default function HomePageCars() {
         avatarUrl={user?.avatar || '/flexii.png'}
         onAvatarClick={openMenu}
         onLoginClick={openLogin}
-        onSignupClick={openSignup}  
-        />
+        onSignupClick={openSignup}
+      />
       <Header
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}
         onAvatarClick={openMenu}
       />
-      <ProfileMenu
+      <ProfileCars
         isLoggedIn={loggedIn}
         onLoginClick={openLogin}
         onSignupClick={openSignup}
@@ -99,9 +116,12 @@ export default function HomePageCars() {
         onSignupSuccess={handleSignupSuccess}
       />
 
-      <CategoryBar
+      {/* ✅ BARRE CATEGORIE + TRI + RECHERCHE */}
+      <CategoryCars
         onSortChange={setSortOption}
         onOpenFilters={() => setShowFilters(true)}
+        searchText={searchText}
+        onSearchChange={setSearchText}
       />
 
       <MobileSearchBar onClick={() => setShowReservation(true)} />

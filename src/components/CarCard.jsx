@@ -48,6 +48,25 @@ function CarCard({ car, isLoggedIn, onLoginClick }) {
     }
   };
 
+  const renderPrice = () => {
+    if (car.price_per_month) {
+      return <strong>{car.price_per_month} FCFA</strong>;
+    } else if (car.price_per_day) {
+      return <strong>{car.price_per_day} FCFA</strong>;
+    } else if (car.price_for_sale) {
+      return <strong>{car.price_for_sale} FCFA</strong>;
+    } else {
+      return <strong>Prix non spécifié</strong>;
+    }
+  };
+
+  const renderUnit = () => {
+    if (car.price_per_month) return '/mois';
+    if (car.price_per_day) return '/jour';
+    if (car.price_for_sale) return '/vente';
+    return '';
+  };
+
   return (
     <div
       className="card1"
@@ -97,7 +116,7 @@ function CarCard({ car, isLoggedIn, onLoginClick }) {
             {new Date(car.created_at).toLocaleDateString()}
           </p>
           <div className="h">
-            <strong>€{car.price_per_day}</strong> /jour
+            {renderPrice()} {renderUnit()}
           </div>
         </div>
         <div className="rate">

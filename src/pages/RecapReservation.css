@@ -1,0 +1,117 @@
+.recap-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #f7f7f7;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.recap-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.recap-card h1 {
+  font-size: 28px;
+  color: #FF385C;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.recap-details {
+  text-align: left;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.recap-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #444;
+}
+
+.recap-row .label {
+  font-weight: 500;
+}
+
+.recap-row .value {
+  font-weight: 600;
+}
+
+.recap-row.highlight {
+  background: #fff0f0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 17px;
+  color: #C4002F;
+}
+
+.recap-row.highlight .strong {
+  font-weight: 700;
+}
+
+.recap-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-main,
+.btn-secondary {
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn-main {
+  background: #FF385C;
+  color: white;
+}
+
+.btn-main:hover {
+  background: #e03550;
+}
+
+.btn-secondary {
+  background: #f2f2f2;
+  color: #444;
+}
+
+.btn-secondary:hover {
+  background: #e4e4e4;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .recap-card {
+    padding: 25px 20px;
+  }
+
+  .recap-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .recap-row.highlight {
+    font-size: 16px;
+  }
+}

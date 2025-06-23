@@ -15,6 +15,18 @@ function ProfileMenu({ isLoggedIn, onLoginClick, onSignupClick, visible, onClose
     if (onClose) onClose(); // Ferme le menu
     if (callback) callback(); // Exécute callback (login/signup)
   };
+   const handleLogout = async () => {
+    try {
+      await fetch('http://localhost/flexii/api/logout.php', {
+        method: 'GET',
+        credentials: 'include', // pour inclure les cookies si nécessaire
+      });
+      // Recharge la page et redirige vers /vehicules
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion :', error);
+    }
+  };
 
   return (
     <div
@@ -62,24 +74,34 @@ function ProfileMenu({ isLoggedIn, onLoginClick, onSignupClick, visible, onClose
       <ul style={{ margin: 0, padding: 0, listStyle: 'none', marginTop: '32px' }}>
         {isLoggedIn ? (
           <>
-            <li><Link to="/messages" onClick={onClose}>Messages</Link></li>
+           <li>
+  <a
+    href="https://wa.me/+330753770441" // Remplace avec ton vrai numéro
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={onClose}
+  >
+    nous contacter via WhatsApp
+  </a>
+</li>
+
             <li><Link to="/notifications" onClick={onClose}>Notifications <span className="notif-dot"></span></Link></li>
             <li><Link to="/user-booking" onClick={onClose}>Mes réservations</Link></li>
             <li><Link to="/favoris" onClick={onClose}>Favoris</Link></li>
             <hr />
-            <li><Link to="/gerer-logements" onClick={onClose}>Gérer mes annonces</Link></li>
             <li><Link to="/dashboard_hote" onClick={onClose}>Publier une annonce</Link></li>
             <li><Link to="/user-profile" onClick={onClose}>Compte</Link></li>
             <hr />
             <li><Link to="/contact" onClick={onClose}>Nous contacter</Link></li>
-            <li><a href="http://localhost/flexii/api/logout.php">Déconnexion</a></li>
+            <li><button className="no-style-button" onClick={handleLogout}>Déconnexion</button></li>
+
           </>
         ) : (
           <>
             <li><a href="#" onClick={() => handleClick(onLoginClick)}>Connexion</a></li>
             <li><a href="#" onClick={() => handleClick(onSignupClick)}>Inscription</a></li>
             <li><Link to="/publier" onClick={onClose}>Publier une annonce</Link></li>
-            <li><Link to="/experience" onClick={onClose}>Créer une expérience</Link></li>
+            
             <li><Link to="/aide" onClick={onClose}>Centre d'aide</Link></li>
           </>
         )}

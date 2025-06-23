@@ -9,6 +9,7 @@ import BottomNavCar from '../components/BottomNavCar';
 import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
 import { AuthContext } from '../App';
+import './cars.css';
 
 function VehicleDetails() {
   const { id } = useParams();

@@ -1,14 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import styles from '../styles/Set.module.css';
-import './DashboardHote.css';
-import {
-  FaHome, FaPlusCircle, FaComments, FaUsers, FaCalendarCheck
-} from 'react-icons/fa';
+import { FaArrowLeft } from 'react-icons/fa';
+
+import Head from '../components/Head';
+import ProfileMenu from '../components/ProfileMenu';
+import BottomNav from '../components/BottomNav';
+import LoginModal from '../components/LoginModal';
+import SignupModal from '../components/SignupModal';
+import { AuthContext } from '../App';
+
+import './UserBooking.css';
 
 function UserBooking() {
   const [listings, setListings] = useState([]);
   const navigate = useNavigate();
+
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [signupOpen, setSignupOpen] = useState(false);
+
+  const { auth } = useContext(AuthContext);
+  const { loggedIn, user } = auth;
 
   useEffect(() => {
     fetch('http://localhost/flexii/api/get_user_bookings.php', {
@@ -24,71 +36,110 @@ function UserBooking() {
   };
 
   return (
-    <main className="dashboard-container">
-      <header className="dashboard-header">
-        <h1 className="dashboard-title">Mes réservations</h1>
-        <p className="dashboard-subtitle">Commentez les logements après votre séjour.</p>
+ <>
+     <Head
+        isLoggedIn={loggedIn}
+        avatarUrl={user?.avatar || '/flexii.png'}
+        onAvatarClick={() => setMenuVisible(true)}
+      />
+    <main className="user-booking-container">
+     
+
+      <ProfileMenu
+        isLoggedIn={loggedIn}
+        onLoginClick={() => setLoginOpen(true)}
+        onSignupClick={() => setSignupOpen(true)}
+        visible={menuVisible}
+        onClose={() => setMenuVisible(false)}
+      />
+
+      <div className="back-button-wrapper">
+        <button className="back-button" onClick={() => navigate(-1)}>
+          <FaArrowLeft /> Retour
+        </button>
+      </div>
+
+      <header className="user-booking-header">
+        <h1>Mes réservations</h1>
+        <p>Commentez les logements après votre séjour</p>
       </header>
 
-      <div className={styles.page}>
-        <main className={styles.main}>
-          <div className={styles.selectionPanel}>
-            <h2>Sélectionnez un logement</h2>
-            <div className={styles.carousel}>
-              {listings.map(listing => {
-                const today = new Date();
-                const checkInDate = new Date(listing.check_in);
-                const checkOutDate = new Date(listing.check_out);
-                const peutCommenter = checkOutDate <= today && !listing.has_commented;
-                const peutContacter = today >= checkInDate && today <= checkOutDate;
+      <section className="booking-list">
+        {listings.map((listing, index) => {
+          const today = new Date();
+          const checkInDate = new Date(listing.check_in);
+          const checkOutDate = new Date(listing.check_out);
+          const peutCommenter = checkOutDate <= today && !listing.has_commented;
+          const peutContacter = today >= checkInDate && today <= checkOutDate;
 
-                return (
-                  <div key={listing.id} className={styles.carouselItem}>
-                    <img src={listing.images[0]} alt={listing.title} />
-                    <p>{listing.title}</p>
-                    <p style={{ fontSize: '14px', color: '#555' }}>
-                      📅 {listing.check_in} → {listing.check_out}
-                    </p>
+          const imageUrl = listing.images?.[0] || '/default.jpg';
 
-                    {listing.has_commented && (
-                      <p style={{ color: 'green', fontWeight: 'bold' }}>
-                        ✅ Commentaire déjà envoyé
-                      </p>
-                    )}
+          return (
+            <div
+              key={`${listing.id || index}-${listing.booking_id || index}`}
+              className="booking-card"
+            >
+              <img src={imageUrl} alt={listing.title} className="booking-image" />
 
-                    {checkOutDate > today && (
-                      <p style={{ color: '#999' }}>⏳ Séjour en cours ou à venir</p>
-                    )}
+              <div className="booking-info">
+                <h2>{listing.title}</h2>
+                <p className="booking-dates">{listing.check_in} → {listing.check_out}</p>
 
-                    {/* BOUTON COMMENTER */}
-                    {peutCommenter && (
-                      <button
-                        className="btn-commenter"
-                        onClick={() => handleComment(listing)}
-                      >
-                        📝 Commenter
-                      </button>
-                    )}
+                {listing.has_commented && (
+                  <p className="comment-status green">✅ Commentaire déjà envoyé</p>
+                )}
 
-                    {/* BOUTON MESSAGE À L’HÔTE */}
-                    {peutContacter && (
-                      <Link to={`/messagerie/${listing.booking_id}`} className="btn-contact-hote">
+                {checkOutDate > today && (
+                  <p className="comment-status grey">⏳ Séjour en cours ou à venir</p>
+                )}
 
-                        ✉️ Envoyer un message à l’hôte
-                      </Link>
-                    )}
-                  </div>
-                );
-              })}
+                {peutCommenter && (
+                  <button
+                    className="btn-pink"
+                    onClick={() => handleComment(listing)}
+                  >
+                    📝 Commenter
+                  </button>
+                )}
+
+                {peutContacter && (
+                  <Link to={`/messagerie/${listing.booking_id}`} className="btn-outline-pink">
+                    ✉️ Contacter l’hôte
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
-        </main>
+          );
+        })}
+      </section>
 
-        <footer className={styles.footer}>
-          <p>© 2025 Flexii - Tous droits réservés</p>
-        </footer>
-      </div>
+      <footer className="user-booking-footer">
+        <p>© 2025 Flexii - Tous droits réservés</p>
+      </footer>
+
+      <LoginModal
+        visible={loginOpen}
+        onClose={() => setLoginOpen(false)}
+        onSwitch={() => {
+          setLoginOpen(false);
+          setSignupOpen(true);
+        }}
+        onLoginSuccess={() => setLoginOpen(false)}
+      />
+
+      <SignupModal
+        visible={signupOpen}
+        onClose={() => setSignupOpen(false)}
+        onSignupSuccess={() => setSignupOpen(false)}
+      />
+
+      <BottomNav
+        isLoggedIn={loggedIn}
+        onLoginClick={() => setLoginOpen(true)}
+        onSignupClick={() => setSignupOpen(true)}
+      />
     </main>
+    </>
   );
 }
 

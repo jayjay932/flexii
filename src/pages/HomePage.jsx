@@ -1,4 +1,3 @@
-// src/pages/HomePage.jsx
 import React, { useState, useEffect, useContext } from 'react';
 import Bar from '../components/Bar';
 import MobileMenu from '../components/MobileMenu';
@@ -15,11 +14,9 @@ import FilterPanel from '../components/FilterPanel';
 import { AuthContext } from '../App';
 
 export default function HomePage() {
-  // Auth context
   const { auth, setAuth } = useContext(AuthContext);
   const { loggedIn, user } = auth;
 
-  // UI state
   const [loginVisible, setLoginVisible] = useState(false);
   const [signupVisible, setSignupVisible] = useState(false);
   const [showReservation, setShowReservation] = useState(false);
@@ -27,18 +24,16 @@ export default function HomePage() {
   const [sortOption, setSortOption] = useState('');
   const [filteredListings, setFilteredListings] = useState(null);
   const [defaultListings, setDefaultListings] = useState([]);
-  // Profile menu visibility
+  const [searchText, setSearchText] = useState('');
+
   const [menuVisible, setMenuVisible] = useState(false);
   const openMenu = () => setMenuVisible(true);
   const closeMenu = () => setMenuVisible(false);
 
-  // Auth modal handlers
   const openLogin = () => setLoginVisible(true);
   const closeLogin = () => setLoginVisible(false);
   const openSignup = () => setSignupVisible(true);
   const closeSignup = () => setSignupVisible(false);
-
-
 
   const [showFilters, setShowFilters] = useState(false);
 
@@ -54,34 +49,46 @@ export default function HomePage() {
     setReloadListings(r => !r);
   };
 
-  // Fetch listings
   useEffect(() => {
     fetch('http://localhost/flexii/api/listings.php', { credentials: 'include' })
       .then(res => res.json())
       .then(data => setDefaultListings(data));
   }, [reloadListings]);
 
-  // Sort/filter
   const applySort = (list) => {
     if (!list) return [];
+
+    let filtered = list;
+
+    // Recherche par nom
+    if (searchText.trim() !== '') {
+      filtered = filtered.filter(item =>
+        item.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+    }
+
     switch (sortOption) {
-      case 'price_low': return [...list].sort((a, b) => a.price_per_night - b.price_per_night);
-      case 'price_high': return [...list].sort((a, b) => b.price_per_night - a.price_per_night);
-      case 'newest': return [...list].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-      default: return list;
+      case 'price_low':
+        return [...filtered].sort((a, b) => a.price_per_night - b.price_per_night);
+      case 'price_high':
+        return [...filtered].sort((a, b) => b.price_per_night - a.price_per_night);
+      case 'newest':
+        return [...filtered].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      default:
+        return filtered;
     }
   };
 
   return (
     <>
       <Bar />
-     <MobileMenu
+      <MobileMenu
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}
         onAvatarClick={openMenu}
         onLoginClick={openLogin}
-        onSignupClick={openSignup}  
-        />
+        onSignupClick={openSignup}
+      />
       <Header
         isLoggedIn={loggedIn}
         avatarUrl={user?.avatar || '/flexii.png'}
@@ -94,24 +101,26 @@ export default function HomePage() {
         visible={menuVisible}
         onClose={closeMenu}
       />
-
       <LoginModal
         visible={loginVisible}
         onClose={closeLogin}
         onSwitch={() => { closeLogin(); openSignup(); }}
         onLoginSuccess={handleLoginSuccess}
       />
-
       <SignupModal
         visible={signupVisible}
         onClose={closeSignup}
         onSwitch={() => { closeSignup(); openLogin(); }}
         onSignupSuccess={handleSignupSuccess}
       />
-<CategoryBar
-  onSortChange={setSortOption}
-  onOpenFilters={() => setShowFilters(true)} // 👈 C’est ce qui manquait
-/>
+
+      {/* BARRE DE CATEGORIE + RECHERCHE */}
+      <CategoryBar
+        onSortChange={setSortOption}
+        onOpenFilters={() => setShowFilters(true)}
+        searchText={searchText}
+        onSearchChange={setSearchText}
+      />
 
       <MobileSearchBar onClick={() => setShowReservation(true)} />
       <ReservationModal
@@ -119,36 +128,32 @@ export default function HomePage() {
         onClose={() => setShowReservation(false)}
         onResults={setFilteredListings}
       />
-{showFilters && (
-  <FilterPanel
-    onApply={(data) => {
-      setFilteredListings(data);
-      setShowFilters(false);
-    }}
-    onClose={() => setShowFilters(false)}
-  />
-)}
 
+      {showFilters && (
+        <FilterPanel
+          onApply={(data) => {
+            setFilteredListings(data);
+            setShowFilters(false);
+          }}
+          onClose={() => setShowFilters(false)}
+        />
+      )}
 
-
-<Listings
-  listings={applySort(filteredListings || defaultListings)}
-  isLoggedIn={loggedIn}
-  onLoginClick={openLogin}
-  reload={reloadListings}
-  sortOption={sortOption}
-  onResetFilters={() => setFilteredListings(null)}
-/>
-
+      <Listings
+        listings={applySort(filteredListings || defaultListings)}
+        isLoggedIn={loggedIn}
+        onLoginClick={openLogin}
+        reload={reloadListings}
+        sortOption={sortOption}
+        onResetFilters={() => setFilteredListings(null)}
+      />
 
       <BottomNav
         isLoggedIn={loggedIn}
         onLoginClick={openLogin}
         onSignupClick={openSignup}
-          onOpenFilters={() => setShowFilters(true)} // ← ajouter cette ligne
+        onOpenFilters={() => setShowFilters(true)}
       />
-
-
     </>
   );
 }

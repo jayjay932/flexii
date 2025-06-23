@@ -21,9 +21,10 @@ export default function ConfirmationLogement() {
     lits,
     sallesDeBain,
     images,
-    price_per_night,
     final_price,
     weekend_discount,
+    occupation_type,
+    typeLocation,
     title,
     description
   } = state;
@@ -78,9 +79,10 @@ export default function ConfirmationLogement() {
           lits,
           sallesDeBain,
           images: uploadedUrls,
-          price_per_night,
           final_price,
           weekend_discount,
+          occupation_type,
+          typeLocation,
           title: title?.trim() || "Titre manquant",
           description: description?.trim() || "Description manquante"
         }),
@@ -116,6 +118,8 @@ export default function ConfirmationLogement() {
               <li><span className="label">Description</span><span className="value">{description}</span></li>
               <li><span className="label">Type</span><span className="value">{typeLogement}</span></li>
               <li><span className="label">Disponibilité</span><span className="value">{typeDispo}</span></li>
+              <li><span className="label">Occupation</span><span className="value">{occupation_type}</span></li>
+              <li><span className="label">Type de location</span><span className="value">{typeLocation}</span></li>
               <li><span className="label">Ville</span><span className="value">{ville}</span></li>
               <li><span className="label">Quartier</span><span className="value">{quartier}</span></li>
               <li><span className="label">Voyageurs</span><span className="value">{voyageurs}</span></li>
@@ -126,8 +130,16 @@ export default function ConfirmationLogement() {
 
             <h2 className="section-title"><i className="fas fa-euro-sign"></i> Tarifs</h2>
             <ul className="info-list">
-              <li><span className="label">Prix / nuit</span><span className="value">{final_price || price_per_night} €</span></li>
-              <li><span className="label">Réduction week-end</span><span className="value">{weekend_discount ? `-${weekend_discount}%` : 'Aucune'}</span></li>
+              <li>
+                <span className="label">Prix</span>
+                <span className="value">
+                  {final_price} FCFA
+                </span>
+              </li>
+              <li>
+                <span className="label">Réduction week-end</span>
+                <span className="value">{weekend_discount ? `-${weekend_discount}%` : 'Aucune'}</span>
+              </li>
             </ul>
 
             <h2 className="section-title"><i className="fas fa-tools"></i> Équipements</h2>

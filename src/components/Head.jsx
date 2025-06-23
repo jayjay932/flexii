@@ -8,14 +8,14 @@ function Head({ isLoggedIn, avatarUrl, onAvatarClick }) {
   return (
     <>
       {/* === NAVBAR DESKTOP === */}
-      <header className="header-container flexii-header desktop-header">
+      <header className="">
         <div className="flexbox">
         <img src="/flexii.png" className="icon1" alt="Logo" />
 
 
           <div className="flex1">
            <button className="but2" onClick={() => window.location.href = `/`}>
-  Logement
+  Logements
 </button>
    <button className="but2" onClick={() => window.location.href = `/vehicules`}>
 Voiture
@@ -28,7 +28,9 @@ services
           </div>
 
           <div className="flex2">
-            <button className="but3">Publier une annonce</button>
+            <button className="but3" onClick={() => window.location.href = `/dashboard_hote`}>
+publier Une annonce
+</button>
             <button className="icon2">
               <i className="bi bi-globe"></i>
             </button>

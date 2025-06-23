@@ -1,173 +1,584 @@
-/* HostProfileForm.css – Style professionnel et responsive */
-
+/* Conteneur principal */
 .host-form-wrapper {
-  max-width: 600px;
-  margin: 3rem auto;
-  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px 16px 80px;
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  font-family: 'Helvetica Neue', sans-serif;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
+/* Titre et sous-titre */
 .host-form-title {
-  font-size: 1.8rem;
+  font-size: 22px;
   font-weight: bold;
-  margin-bottom: 0.5rem;
   text-align: center;
-  color: #111;
+  margin-bottom: 4px;
 }
 
 .host-form-subtitle {
-  font-size: 1rem;
-  color: #666;
+  font-size: 14px;
+  color: #555;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 24px;
 }
 
-.host-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
+/* Groupe de champs */
 .form-group {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
+  padding: 0 12px;
 }
 
 .form-group label {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 0.4rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  gap: 8px;
+  color: #333;
 }
 
+/* Champs de saisie */
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 0.75rem 1rem;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.2s;
+  background: #f9f9f9;
+  font-family: inherit;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #e91e63;
-  outline: none;
+/* Textarea spécifique */
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-.avatar-upload input {
-  padding: 0.4rem;
+/* Upload avatar */
+.avatar-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
 }
 
 .avatar-preview {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-top: 0.75rem;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
   object-fit: cover;
-  border: 2px solid #e91e63;
+  border: 2px solid #ddd;
+  margin-bottom: 8px;
+}
+
+/* Bouton éditer sous la photo */
+.avatar-upload label {
+  cursor: pointer;
+}
+
+.avatar-upload input[type="file"] {
+  display: none;
+}
+
+.avatar-upload .edit-button {
+  position: absolute;
+  bottom: 0;
+  background: #fff;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transform: translateY(50%);
+}
+
+/* Messages d’upload */
+.upload-hint,
+.upload-success {
+  font-size: 13px;
+  margin-top: 6px;
+  color: #888;
 }
 
 .upload-success {
-  color: #34a853;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+  color: green;
 }
 
-.upload-hint {
-  color: #999;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
-}
-
+/* Bouton de soumission */
 .submit-button {
-  background-color: #e91e63;
+  width: 100%;
+  padding: 14px;
+  background-color: #000;
   color: #fff;
-  font-size: 1rem;
-  padding: 0.75rem;
   border: none;
-  border-radius: 12px;
-  cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s ease;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 16px;
 }
 
 .submit-button:hover {
-  background-color: #d81b60;
+  background-color: #222;
 }
 
+/* Message de feedback */
 .form-message {
   text-align: center;
-  font-weight: 500;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-}
-
-/* Responsive */
-@media (max-width: 500px) {
-  .host-form-wrapper {
-    padding: 1.5rem;
-    margin: 1rem;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    font-size: 0.95rem;
-  }
-
-  .submit-button {
-    font-size: 0.95rem;
-  }
-}
-
-
-/* Couleur rose pour les icônes */
-.form-group label svg {
-  color: #e91e63;
-}
-
-/* Titre principal stylé */
-.host-form-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-  text-align: center;
-  color: #e91e63;
-  letter-spacing: -0.5px;
-}
-
-/* Sous-titre plus doux */
-.host-form-subtitle {
-  font-size: 1rem;
-  color: #777;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.form-message {
-  margin-top: 1rem;
-  padding: 10px;
-  border-radius: 6px;
+  margin-top: 16px;
   font-weight: bold;
-  text-align: center;
+  font-size: 14px;
 }
 
 .form-message.success {
-  color: #155724;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
+  color: green;
 }
 
 .form-message.error {
-  color: #721c24;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
+  color: red;
+}
+
+/* Responsive mobile */
+@media (max-width: 480px) {
+  .host-form-wrapper {
+    padding: 24px 12px 100px;
+  }
+}
+.host-form-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 1024px) {
+  .host-form-wrapper {
+    max-width: 720px;
+    padding: 40px;
+  }
+}
+
+/* Grille responsive pour le formulaire hôte */
+.host-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Par défaut (mobile) */
+.host-avatar-column,
+.host-form-column {
+  width: 100%;
+}
+
+/* Sur PC (grands écrans) */
+@media (min-width: 1024px) {
+  .host-form-grid {
+    flex-direction: row;
+  }
+
+  .host-avatar-column {
+    width: 41.66%; /* 5/12 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .host-form-column {
+    width: 58.33%; /* 7/12 */
+  }
+
+  .avatar-upload {
+    align-items: flex-start;
+  }
+}
+/* Nouvelle mise en page plein écran */
+.host-profile-page-full {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.host-profile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+}
+
+@media (min-width: 1024px) {
+  .host-profile-container {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+.left-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.right-column {
+  flex: 2;
+}
+
+.avatar-preview-big {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #222;
+  color: white;
+  font-size: 64px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.avatar-upload {
+  position: relative;
+  text-align: center;
+}
+
+.edit-button-big {
+  display: inline-block;
+  background: white;
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.avatar-upload input[type="file"] {
+  display: none;
+}
+
+.host-form-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.host-form-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.submit-button {
+  margin-top: 20px;
+  width: 100%;
+  background: black;
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-message.success {
+  color: green;
+}
+.form-message.error {
+  color: red;
+}
+
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Container global */
+.host-profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f8f8f8;
+}
+
+/* Form wrapper déjà existant */
+.host-form-wrapper {
+  background: white;
+  padding: 40px 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  z-index: 1;
+  width: 100%;
+  max-width: 720px;
+  margin: 40px 20px;
+}
+
+/* Décors latéraux */
+.side-decor {
+  position: relative;
+  width: 100px;
+  flex-shrink: 0;
+  display: none; /* caché sur mobile */
+}
+
+.left-decor {
+  background: url('/assets/left-design.png') no-repeat center;
+  background-size: contain;
+}
+
+.right-decor {
+  background: url('/assets/right-design.png') no-repeat center;
+  background-size: contain;
+}
+
+@media (min-width: 1024px) {
+  .side-decor {
+    display: block;
+    height: 100%;
+  }
+}
+
+
+
+/* Layout principal */
+.host-profile-fullscreen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.host-profile-main {
+  flex: 1;
+  padding: 40px 0;
+}
+
+/* Header */
+.host-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 32px;
+  border-bottom: 1px solid #eee;
+}
+
+.host-logo {
+  height: 32px;
+}
+
+.host-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.host-mode {
+  font-size: 14px;
+  color: #333;
+}
+
+.host-avatar {
+  width: 32px;
+  height: 32px;
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.host-menu-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Footer */
+.host-footer {
+  padding: 24px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+
+.host-footer-btn {
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+
+.right-column {
+  flex: 2;
+  padding: 20px 0;
+}
+
+.host-form-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.host-form-subtitle {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 32px;
+  text-align: left;
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: #fafafa;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-button {
+  background: #FF385C;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 24px;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background: #e02d4c;
+}
+
+
+
+.fixed-back-button {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.back-button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #f7f7f7;
+}
+
+@media (max-width: 768px) {
+  .fixed-back-button {
+    top: 70px;
+    right: 12px;
+  }
+
+  .back-button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }

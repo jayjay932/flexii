@@ -25,49 +25,10 @@ import LoginModal from '../components/LoginModal';
 import SignupModal from '../components/SignupModal';
 import { AuthContext } from '../App';
 import BottomNavCar from '../components/BottomNavCar';
+import ProfileCars from '../components/ProfileCars';
+import Head from '../components/Head';
 
-
-function HeadCar({ isLoggedIn, avatarUrl, onAvatarClick }) {
-  return (
-    <header className="header-container flexii-header desktop-header">
-      <div className="flexbox">
-        <img src="/flexii.png" className="icon1" alt="Logo" />
-
-        <div className="flex1">
-          <button className="but2" onClick={() => window.location.href = `/`}>
-            Logement
-          </button>
-          <button className="but2" onClick={() => window.location.href = `/vehicules`}>
-            Voiture
-          </button>
-          <button className="but2" onClick={() => window.location.href = `/vehicules`}>
-            Services
-          </button>
-        </div>
-
-        <div className="flex2">
-          <button className="but3">publier une annonce</button>
-          <button className="icon2">
-            <i className="bi bi-globe"></i>
-          </button>
-        </div>
-
-        <button
-          className="f1 profile-button"
-          id="profileButton"
-          onClick={onAvatarClick}
-          title={isLoggedIn ? 'Voir mon profil' : 'Se connecter'}
-          aria-label={isLoggedIn ? 'Voir mon profil' : 'Se connecter'}
-        >
-          <i className="bi bi-person-circle"></i>
-          <span className="profile-label">
-            {isLoggedIn ? 'Mon profil' : 'Connexion'}
-          </span>
-        </button>
-      </div>
-    </header>
-  );
-}
+import './cars.css';
 
 function CarsDetails() {
   const { id } = useParams();
@@ -135,6 +96,10 @@ function CarsDetails() {
   const closeSignup = () => setSignupOpen(false);
   const toggleMenu = () => setMenuVisible(v => !v);
 
+  const onAvatarClick = () => {
+    toggleMenu();
+  };
+
   const handleLoginSuccess = (userData) => {
     setAuth({ loggedIn: true, user: userData, loading: false });
     closeLogin();
@@ -145,6 +110,17 @@ function CarsDetails() {
     closeSignup();
   };
 
+  const getPriceDisplay = () => {
+    if (listing.price_per_day && listing.price_per_day > 0) {
+      return `€${listing.price_per_day} / jour`;
+    } else if (listing.price_per_month && listing.price_per_month > 0) {
+      return `€${listing.price_per_month} / mois`;
+    } else if (listing.price_for_sale && listing.price_for_sale > 0) {
+      return `€${listing.price_for_sale} / vente`;
+    }
+    return 'Prix non spécifié';
+  };
+
   const listing = listingData;
   const validComments = comments.filter(c => c.content?.trim());
 
@@ -153,13 +129,9 @@ function CarsDetails() {
 
   return (
     <div className="listing-detail">
-      <HeadCar
-        isLoggedIn={loggedIn}
-        avatarUrl={user?.avatar || '/flexii.png'}
-        onAvatarClick={toggleMenu}
-      />
+      <Head isLoggedIn={loggedIn} avatarUrl={user?.avatar || '/flexii.png'} onAvatarClick={onAvatarClick} />
 
-      <ProfileMenu
+      <ProfileCars
         isLoggedIn={loggedIn}
         onLoginClick={openLogin}
         onSignupClick={openSignup}
@@ -176,21 +148,18 @@ function CarsDetails() {
       </div>
 
       <div className="container">
-        {/* ... ton JSX original reste ici sans modification de classes */}
-
-
-          <h1>{listing.title}</h1>
+        <h1>{listing.title}</h1>
         <div className="location">{listing.city}, {listing.address}</div>
 
         <div className="details">
- <div className="tag"><FaCalendarAlt /> Année : {listing.annee}</div>
+          <div className="tag"><FaCalendarAlt /> Année : {listing.annee}</div>
           <div className="tag"><FaTachometerAlt /> {listing.kilometrage} km</div>
           <div className="tag"><FaGasPump /> {listing.carburant}</div>
           <div className="tag"><FaCogs /> {listing.transmission}</div>
         </div>
 
         <div className="price-booking">
-          <div className="price">€{listing.price_per_day} / jour</div>
+          <div className="price">{getPriceDisplay()}</div>
           <button className="btn" onClick={() => setCalendarOpen(true)}>
             Réserver
           </button>
@@ -203,20 +172,14 @@ function CarsDetails() {
           availabilityMap={availabilityMap}
         />
 
-<div className="rules-card" style={{ marginTop: '50px' }}>
-<h2>Équipements</h2>
+        <div className="rules-card" style={{ marginTop: '50px' }}>
+          <h2>Équipements</h2>
           <ul className="rules-list">
-          <li>
-               <i className="fas fa-calendar-alt icon-rose"></i>
-     
-      Type : {listing.type_location}
-    </li>
-          <li>  < FaDoorOpen style={{ color: '#e91e63', marginRight: 8 }} /> Portes : {listing.nombre_portes}</li>
-            <li>< FaUserFriends style={{ color: '#e91e63', marginRight: 8 }} />  Places : {listing.nombre_places}</li>
-            <li>     <FaPalette style={{ color: '#e91e63', marginRight: 8 }} /> Couleur : {listing.couleur}</li>
-            {listing.climatisation && <li>    < FaSnowflake style={{ color: '#e91e63', marginRight: 8 }} />      Climatisation</li>}
-        
-           
+            <li><i className="fas fa-calendar-alt icon-rose"></i> Type : {listing.type_location}</li>
+            <li><FaDoorOpen style={{ color: '#e91e63', marginRight: 8 }} /> Portes : {listing.nombre_portes}</li>
+            <li><FaUserFriends style={{ color: '#e91e63', marginRight: 8 }} /> Places : {listing.nombre_places}</li>
+            <li><FaPalette style={{ color: '#e91e63', marginRight: 8 }} /> Couleur : {listing.couleur}</li>
+            {listing.climatisation && <li><FaSnowflake style={{ color: '#e91e63', marginRight: 8 }} /> Climatisation</li>}
             <li><i className="fas fa-tag"></i> État : {listing.etat}</li>
           </ul>
         </div>
@@ -226,27 +189,21 @@ function CarsDetails() {
         <div className="rules-card" style={{ marginTop: '50px' }}>
           <h2 className="section-title">Règlement intérieur</h2>
           <ul className="rules-list">
-
-          <li>  < FaChargingStation style={{ color: '#e91e63', marginRight: 8 }} /> Puissance fiscale : {listing.puissance_fiscale}</li>
-            <li><FaCalendarAlt  style={{ color: '#e91e63', marginRight: 8 }} />
-            Conso moyenne : {listing.consommation_moyenne}</li>
-            <li>    <  FaCheckCircle style={{ color: '#e91e63', marginRight: 8 }} />                       CT valide : {listing.controle_technique}</li>
+            <li><FaChargingStation style={{ color: '#e91e63', marginRight: 8 }} /> Puissance fiscale : {listing.puissance_fiscale}</li>
+            <li><FaCalendarAlt style={{ color: '#e91e63', marginRight: 8 }} /> Conso moyenne : {listing.consommation_moyenne}</li>
+            <li><FaCheckCircle style={{ color: '#e91e63', marginRight: 8 }} /> CT valide : {listing.controle_technique}</li>
           </ul>
         </div>
-
 
         <div className="rules-card" style={{ marginTop: '50px' }}>
           <h2 className="section-title">Règlement intérieur</h2>
           <ul className="rules-list">
-        
-            <li> < FaCarSide style={{ color: '#e91e63', marginRight: 8 }} /> Type : {listing.type_vehicule}</li>
+            <li><FaCarSide style={{ color: '#e91e63', marginRight: 8 }} /> Type : {listing.type_vehicule}</li>
             <li><i className="fas fa-map-marker-alt"></i> GPS : {listing.gps ? 'Oui' : 'Non'}</li>
-<li><i className="fas fa-video"></i> Caméra de recul : {listing.camera_recul ? 'Oui' : 'Non'}</li>
-
+            <li><i className="fas fa-video"></i> Caméra de recul : {listing.camera_recul ? 'Oui' : 'Non'}</li>
           </ul>
         </div>
 
-       
         {validComments.length > 0 ? (
           <section style={{ marginTop: 50 }}>
             <h2 style={{ fontSize: 28, fontWeight: 'bold' }}>Coup de cœur voyageurs</h2>
@@ -276,22 +233,20 @@ function CarsDetails() {
                 </div>
               ))}
             </div>
-            
-            <div style={{ textAlign: 'center', marginTop: 40  }}>
-              
-            <Link
-  to={`/afficher_commentaires/${listing.id}`}
-  className="btn"
-  style={{
-    padding: isMobile ? '8px 16px' : '12px 24px',
-    fontSize: isMobile ? '14px' : '16px'
-  }}
->
-  Voir tous les commentaires
-</Link>
+
+            <div style={{ textAlign: 'center', marginTop: 40 }}>
+              <Link
+                to={`/afficher_commentaires/${listing.id}`}
+                className="btn"
+                style={{
+                  padding: isMobile ? '8px 16px' : '12px 24px',
+                  fontSize: isMobile ? '14px' : '16px'
+                }}
+              >
+                Voir tous les commentaires
+              </Link>
             </div>
           </section>
-          
         ) : (
           <div className="no-comments-container">
             <img src="/assets/empty-comments.svg" alt="Aucun commentaire" />
@@ -310,22 +265,18 @@ function CarsDetails() {
             <div className="host-left">
               <div className="host-avatar-container">
                 <img
-  src={host.avatar_url ? `http://localhost/flexii/api/${host.avatar_url}` : '/default-avatar.jpg'}
-  alt={`Photo de ${host.name}`}
-  className="host-avatar"
-/>
-{Boolean(Number(host.superhost)) && <div className="superhost-badge">★</div>}
-
+                  src={host.avatar_url ? `http://localhost/flexii/api/${host.avatar_url}` : '/default-avatar.jpg'}
+                  alt={`Photo de ${host.name}`}
+                  className="host-avatar"
+                />
+                {Boolean(Number(host.superhost)) && <div className="superhost-badge">★</div>}
               </div>
-              
-              <div className="host-name">{host.name}</div>
-            <h3>
-  {host.name} {host.superhost == 1 || host.superhost === "1" ? 'est Superhôte' : ''}
-</h3>
 
+              <div className="host-name">{host.name}</div>
+              <h3>{host.name} {host.superhost == 1 || host.superhost === "1" ? 'est Superhôte' : ''}</h3>
             </div>
+
             <div className="host-right">
-             
               <p>Hôte expérimenté avec d’excellentes évaluations.</p>
               <div className="host-info">
                 <div><strong>{host.total_reviews}</strong> évaluations</div>

@@ -25,7 +25,9 @@ services
         </div>
 
         <div className="flex2">
-          <button className="but3">publier une annonce</button>
+           <button className="but3" onClick={() => window.location.href = `/dashboard_hote`}>
+publier Une annonce
+</button>
           <button className="icon2"><i className="bi bi-globe"></i></button>
           <button
             className="f1 profile-button"

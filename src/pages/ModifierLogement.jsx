@@ -124,6 +124,15 @@ function ModifierLogement() {
           <input type="number" name="max_guests" value={formData.max_guests || ''} onChange={handleChange} />
         </label>
 
+         <label>Statut publication
+  <select name="posted_statut" value={formData.posted_statut || ''} onChange={handleChange}>
+    <option value="">-- Choisir un statut --</option>
+    <option value="actif">Actif</option>
+    <option value="inactif">Inactif</option>
+  </select>
+</label>
+
+
         <label>Chambres
           <input type="number" name="num_bedrooms" value={formData.num_bedrooms || ''} onChange={handleChange} />
         </label>

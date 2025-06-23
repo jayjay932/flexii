@@ -1,0 +1,304 @@
+.mobile-formulaire-achat {
+  padding: 20px;
+  background: #fff;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.card-container {
+  background: #fafafa;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+.preview-image {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.location {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.icon {
+  background: #f3f3f3;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.warning-box {
+  background: #ffe9ea;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color:#FF385C;
+}
+
+.visit-free {
+  color: #555;
+  font-size: 13px;
+}
+
+.time-select select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.delay-warning {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.form-fields input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.amount-pay {
+  font-weight: 500;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.red {
+  color:#FF385C;
+}
+
+.notice {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background:#FF385C;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #FF385C;
+}
+
+.header-price {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.price-tag {
+  font-size: 16px;
+  font-weight: bold;
+  color: #FF385C;
+  background: #fff1f1;
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+.icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  justify-content: start;
+}
+
+.icon {
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+mobile-formulaire-achat {
+  padding: 20px;
+  background: #fff;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+}
+
+.card-container {
+  background: #fafafa;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+}
+
+.preview-image {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.location {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.icon {
+  background: #f3f3f3;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.warning-box {
+  background: #ffe9ea;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  color:#FF385C;
+}
+
+.visit-free {
+  color: #555;
+  font-size: 13px;
+}
+
+.time-select select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.delay-warning {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 12px;
+}
+
+.form-fields input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-bottom: 10px;
+  background: #fff;
+}
+
+.amount-pay {
+  font-weight: 500;
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.red {
+  color:#FF385C;
+}
+
+.notice {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background:#FF385C;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background: #FF385C;
+}
+
+.header-price {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.price-tag {
+  font-size: 16px;
+  font-weight: bold;
+  color: #FF385C;
+  background: #fff1f1;
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+.icons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 15px;
+  justify-content: start;
+}
+
+.icon {
+  background: #f3f3f3;
+  border-radius: 12px;
+  padding: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+}

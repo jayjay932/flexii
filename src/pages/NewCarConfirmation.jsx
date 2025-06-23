@@ -29,6 +29,7 @@ export default function NewCarConfirmation() {
     nombre_places,
     price_per_day,
     price_for_sale,
+    price_for_month,  
     weekend_discount,
     images = [],            // pour preview
     imageFiles = []         // pour upload réel
@@ -89,6 +90,7 @@ export default function NewCarConfirmation() {
           images: uploadedUrls,
           price_per_day: price_per_day || null,
           price_for_sale: price_for_sale || null,
+          price_for_month: price_for_month || null,
           weekend_discount
         })
       });
@@ -146,6 +148,9 @@ export default function NewCarConfirmation() {
               )}
               {price_for_sale && (
                 <li><span className="label">Prix de vente</span><span className="value">{price_for_sale} FCFA</span></li>
+              )}
+              {price_for_month && (
+                <li><span className="label">Prix mensuel</span><span className="value">{price_for_month} FCFA</span></li>
               )}
               {price_per_day && (
                 <li><span className="label">Réduction week-end</span><span className="value">{weekend_discount ? `-${weekend_discount}%` : 'Aucune'}</span></li>

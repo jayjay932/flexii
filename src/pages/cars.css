@@ -1,0 +1,13 @@
+.carousel-arrow {
+  color: #e91e63; /* rose */
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #e91e63;
+  padding: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background-color: #fce4ec; /* rose très clair au survol */
+}

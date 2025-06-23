@@ -51,12 +51,7 @@ function Favoris() {
       />
 
       {/* Bouton retour */}
-      <button
-        className={styles.backButton}
-        onClick={() => (window.location.href = 'http://localhost:5173/')}
-      >
-        ← Retour à l'accueil
-      </button>
+     
 
       {/* Titre */}
       <header className={styles.header}>

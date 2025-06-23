@@ -8,7 +8,8 @@ import {
   FaUserTie,
   FaBoxOpen,
   FaBuilding,
-  FaShoppingBag
+  FaShoppingBag,
+  FaSearch
 } from 'react-icons/fa';
 
 const categories = [
@@ -23,7 +24,7 @@ const categories = [
   { name: 'Mode', icon: <FaShoppingBag />, path: '/mode' }
 ];
 
-function CategoryBar({ onSortChange, onOpenFilters }) {
+function CategoryBar({ onSortChange, onOpenFilters, searchText, onSearchChange }) {
   return (
     <div className="flexbox3">
       <div className="icon4"><i className="bi bi-caret-left-fill"></i></div>
@@ -39,18 +40,35 @@ function CategoryBar({ onSortChange, onOpenFilters }) {
 
       <div className="f2">
         <div className="icon4"><i className="bi bi-caret-right-fill"></i></div>
+
         <button className="fl2" onClick={onOpenFilters}>
           <i className="bi bi-sliders2"></i><h4>Filters</h4>
         </button>
-        <div className="sort-container">
-          <i className="bi bi-arrow-down-up"></i>
-          <select className="sort-select" onChange={(e) => onSortChange(e.target.value)}>
+
+       
+{/* Recherche alignée */}
+   <div className="category-search">
+  <FaSearch className="category-search-icon" />
+  <input
+    type="text"
+    placeholder="Rechercher un logement"
+    className="category-search-input"
+    value={searchText}
+    onChange={(e) => onSearchChange(e.target.value)}
+  />
+</div>
+ <div className="category-sort">
+          
+          <select onChange={(e) => onSortChange(e.target.value)}>
+            
             <option value="">Trier par</option>
             <option value="price_low">Prix croissant</option>
             <option value="price_high">Prix décroissant</option>
             <option value="newest">Nouveautés</option>
           </select>
         </div>
+
+
       </div>
     </div>
   );

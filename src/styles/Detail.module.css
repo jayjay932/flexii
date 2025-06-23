@@ -89,7 +89,7 @@
 
 /* Container principal */
 .container {
-  max-width: 1120px;
+  max-width: 20px;
   margin: 40px auto;
   background: white;
   border-radius: 14px;
@@ -103,7 +103,7 @@
 .carousel {
   position: relative;
   width: 100%;
-  height: 600px; /* Ou la hauteur que tu veux */
+  height: 6000px; /* Ou la hauteur que tu veux */
   margin-bottom: 25px;
   overflow: hidden;
   border-radius: 14px;
@@ -125,7 +125,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 26px;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 193, 232, 0.7);
   border: none;
   border-radius: 50%;
   padding: 10px 15px;
@@ -334,19 +334,6 @@
 
 
   
-
-  
-  .carousel {
-    position: relative;
-    width: 1000px;
-    height: 400px; /* Ou la hauteur que tu veux */
-    margin-bottom: 25px;
-    overflow: hidden;
-    border-radius: 14px;
-    margin-top: 1px; /* ✅ L'ajout de cet espace va décaler le carrousel par rapport au header */
-
-  }
-
 
 
 
@@ -561,7 +548,7 @@
     width: 1400px;
     max-width: 1420px;
     height: 700px;            /* comme dans ton CSS desktop */
-    margin: 190px auto 25px;   /* top / left&right auto / bottom */
+    margin: 30px auto 25px;   /* top / left&right auto / bottom */
     border-radius: 14px;
   }
 }

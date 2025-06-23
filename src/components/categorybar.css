@@ -33,13 +33,13 @@
   .category-item p {
     margin-top: 4px;
     font-size: 13px;
-    color: #555;
+    color: #efe3e3;
     font-weight: 500;
   }
   
   .scroll-btn {
     font-size: 20px;
-    color: #666;
+    color: #f7f6f6;
     cursor: pointer;
     user-select: none;
     padding: 8px;
@@ -109,3 +109,51 @@
   color: #333;
   margin: 0;
 }
+
+
+.category-search {
+  display: flex;
+  align-items: center;
+  background-color: white;
+ 
+  border-radius: 9999px;
+  padding: 4px 12px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(255, 77, 109, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.category-search:hover {
+  box-shadow: 0 2px 6px rgba(255, 77, 109, 0.2);
+}
+
+.category-search-icon {
+  color: #ff4d6d;
+  font-size: 16px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.category-search-input {
+ display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1.5px solid #eae2e4;
+  border-radius: 99px;
+  padding: 4px 12px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(255, 77, 109, 0.1);
+  transition: box-shadow 0.2s ease;
+  /* ✅ Surtout PAS de border ni radius */
+}
+
+
+.category-sort{
+
+   background-color: white;
+   
+         color: #f7f6f6;
+
+         
+}
+
